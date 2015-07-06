@@ -77,6 +77,11 @@
           // !!!! IMPORTANT !!!! MAKE THE ABOVE BLINK IN YOUR HEAD
       };
     </script>
+	<style>
+		p{text-align:justify}
+		ul li{text-align:justify}
+		ol li{text-align:justify}
+	</style>
   </head>
   <body>
     <section id='abstract'>
@@ -174,14 +179,33 @@
 		</ol>
 	  <h2>Terminology</h2>
       <p>
-        Blah blah blah...
+       The RSHP representation model has been presented in Figure 2. In order to simplify the external view of this model and ease the creation of an OSLC Resource Shape, two main changes, (see Figure 3), have been made in the representation model:
       </p>
+
+	  <ol>
+	  <li>The classes Artifact and KnowledgeElement have been merged. However, the model keeps all the semantics since an artifact will be considered as a knowledge element (just a concept) when it does not contain any relationship. </li>
+	  <li>The tag and value of a metaproperty now point to a Term instead of a KnowledgeElement.</li>
+	  </ol>
+	  
+	 <p style="text-align:center">
+	  <img src="imgs/KM.png" /> <br/>
+	   Figure 2: The KM representation model using UML as simplification of the RSHP representation model.</p>
+	  </p>
+	  
+	  <p>It is important to highlight the strategy followed to model the resource shapes of the elements presented in Figure 5. Taking into account that the Linked Data Initiative has seen last times the creation of methodologies, guidelines or recipes to publish RDF-encoded data, we have paid special attention to follow a similar approach reusing existing RDF-based vocabularies. More specifically, the following rules have been applied to create the OSLC resource shapes:</p>
+	  <ul>
+	  <li>If there is an RDF-based vocabulary that is already a W3C recommendation or it is being promoted by other standards organization, it must be used as it is creating an OSCL Resource Shape.</li>
+	  <li>If there is an RDF-based vocabulary but it is just a de-facto standard, it should be used as it is including minor changes creating an OSCL Resource Shape.</li>
+	  <li>If there is not an RDF-based vocabulary, try to take advantage (reusing properties and classes) of existing RDF-based vocabularies to create the OSLC Resource Shape.</li>
+	  </ul>
+	  <p>In the particular case of knowledge management, we have selected the Simple Knowledge Organization System (SKOS), a W3C recommendation, to define concepts, since it has been designed for promoting controlled vocabularies, thesauri, taxonomies or event simple ontologies to the Linked Data initiative. That is why, in this model, most of the entities can be considered as a <code>skos:Concept</code> and we have created the shape of this standard definition of concept in the resource <code>Ios_km:Concept</code>.</p>
+
     </section>
 	
 	<section>
       <h2>Base Knowledge Management</h2>
       <h3>Compliance</h3>
-	  <table class="table table-stripedtable-bordered">
+	  <table class="table table-striped table-bordered">
             <thead>
                 <tr>
                     <th>Requirement</th>
@@ -360,7 +384,350 @@
 		<li> Description: A textual description of the meaning of the property.
 		</li>
 	</ul> 
-	<h3>KM Resource</h3>
+	<h2>KM Resources</h2>
+	<p>
+	
+	</p>
+	
+	<table class="table table-striped table-bordered table-condensed">
+		<thead>
+		<tr>
+			<th>Prefixed Name</th>
+			<th>Occurs</th>
+			<th>Read-only</th>
+			<th>Value-type</th>
+			<th>Representation</th>
+			<th>Range</th>
+			<th>Description</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#altLabel" title="Skos:altLabel"><code>skos:altLabel</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral" title="Rdf:PlainLiteral"><code>rdf:PlainLiteral</code></a></td>
+			<td class="Description">"The preferred and alternative labels are useful when generating or creating human-readable representations of a knowledge organization system. These labels provide the strongest clues as to the meaning of a SKOS concept."
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#labels">http://www.w3.org/TR/skos-reference/#labels</a></td>
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#broadMatch" title="Skos:broadMatch"><code>skos:broadMatch</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#Concept" title="Skos:Concept"><code>skos:Concept</code></a></td>
+			<td class="Description">This property is used to state mapping (alignment) links between SKOS concepts in different concept schemes, where the links are inherent in the meaning of the linked concepts. 
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#L4307">http://www.w3.org/TR/skos-reference/#L4307</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#broader" title="Skos:broader"><code>skos:broader</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#Concept" title="Skos:Concept"><code>skos:Concept</code></a></td>
+			<td class="Description">It is a semantic relation used to assert a direct hierarchical link between two SKOS concepts.
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#broader">http://www.w3.org/TR/skos-reference/#broader</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#broaderTransitive" title="Skos:broaderTransitive"><code>skos:broaderTransitive</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#Concept" title="Skos:Concept"><code>skos:Concept</code></a></td>
+			<td class="Description">It is a property used to assert a direct hierarchical link between two SKOS concepts. More specifically, it is used to both direct and indirect hierarchical links between concepts. It is the transitive version of skos:broader.
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#broaderTransitive">http://www.w3.org/TR/skos-reference/#broaderTransitive</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#changeNote" title="Skos:changeNote"><code>skos:changeNote</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral" title="Rdf:PlainLiteral"><code>rdf:PlainLiteral</code></a></td>
+			<td class="Description">It is an annotation property. According to the SKOS recommendation: "There is no restriction on the nature of this information, e.g., it could be plain text, hypertext, or an image; it could be a definition, information about the scope of a concept, editorial information, or any other type of information. ". 
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#notes">http://www.w3.org/TR/skos-reference/#notes</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#closeMatch" title="Skos:closeMatch"><code>skos:closeMatch</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#Concept" title="Skos:Concept"><code>skos:Concept</code></a></td>
+			<td class="Description">It is used to link two concepts that are sufficiently similar that they can be used interchangeably in some information retrieval applications. In order to avoid the possibility of "compound errors" when combining mappings across more than two concept schemes, skos:closeMatch is not declared to be a transitive property. 
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#L4307">http://www.w3.org/TR/skos-reference/#L4307</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#definition" title="Skos:definition"><code>skos:definition</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral" title="Rdf:PlainLiteral"><code>rdf:PlainLiteral</code></a></td>
+			<td class="Description">It is an annotation property. According to the SKOS recommendation: "There is no restriction on the nature of this information, e.g., it could be plain text, hypertext, or an image; it could be a definition, information about the scope of a concept, editorial information, or any other type of information. ". 
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#notes">http://www.w3.org/TR/skos-reference/#notes</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#editorialNote" title="Skos:editorialNote"><code>skos:editorialNote</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral" title="Rdf:PlainLiteral"><code>rdf:PlainLiteral</code></a></td>
+			<td class="Description">It is an annotation property. According to the SKOS recommendation: "There is no restriction on the nature of this information, e.g., it could be plain text, hypertext, or an image; it could be a definition, information about the scope of a concept, editorial information, or any other type of information. ". 
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#notes">http://www.w3.org/TR/skos-reference/#notes</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#exactMatch" title="Skos:exactMatch"><code>skos:exactMatch</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#Concept" title="Skos:Concept"><code>skos:Concept</code></a></td>
+			<td class="Description">This property is used to link two concepts, indicating a high degree of confidence that the concepts can be used interchangeably across a wide range of information retrieval applications. It is a transitive property, and is a sub-property of close match.
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#L4307">http://www.w3.org/TR/skos-reference/#L4307</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#example" title="Skos:example"><code>skos:example</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral" title="Rdf:PlainLiteral"><code>rdf:PlainLiteral</code></a></td>
+			<td class="Description">It is an annotation property. According to the SKOS recommendation: "There is no restriction on the nature of this information, e.g., it could be plain text, hypertext, or an image; it could be a definition, information about the scope of a concept, editorial information, or any other type of information. ". 
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#notes">http://www.w3.org/TR/skos-reference/#notes</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#hiddenLabel" title="Skos:hiddenLabel"><code>skos:hiddenLabel</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral" title="Rdf:PlainLiteral"><code>rdf:PlainLiteral</code></a></td>
+			<td class="Description">It is a property to label concepts.
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#labels">http://www.w3.org/TR/skos-reference/#labels</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#historyNote" title="Skos:historyNote"><code>skos:historyNote</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral" title="Rdf:PlainLiteral"><code>rdf:PlainLiteral</code></a></td>
+			<td class="Description">It is an annotation property. According to the SKOS recommendation: "There is no restriction on the nature of this information, e.g., it could be plain text, hypertext, or an image; it could be a definition, information about the scope of a concept, editorial information, or any other type of information. ". 
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#notes">http://www.w3.org/TR/skos-reference/#notes</a></td>
+			</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#inScheme" title="Skos:inScheme"><code>skos:inScheme</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" title="Skos:ConceptScheme"><code>skos:ConceptScheme</code></a></td>
+			<td class="Description">The scheme (an aggregation of one or more SKOS concepts) to which the concept belongs. 
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#schemes">http://www.w3.org/TR/skos-reference/#schemes</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#mappingRelation" title="Skos:mappingRelation"><code>skos:mappingRelation</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#Concept" title="Skos:Concept"><code>skos:Concept</code></a></td>
+			<td class="Description">It is a mapping property to link concepts. It is the superclass of other mapping properties.
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#mapping">http://www.w3.org/TR/skos-reference/#mapping</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#narrowMatch" title="Skos:narrowMatch"><code>skos:narrowMatch</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#Concept" title="Skos:Concept"><code>skos:Concept</code></a></td>
+			<td class="Description">This property is used to state mapping (alignment) links between SKOS concepts in different concept schemes, where the links are inherent in the meaning of the linked concepts.
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#mapping">http://www.w3.org/TR/skos-reference/#mapping</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#narrower" title="Skos:narrower"><code>skos:narrower</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#Concept" title="Skos:Concept"><code>skos:Concept</code></a></td>
+			<td class="Description">It is a semantic relation used to assert a direct hierarchical link between two SKOS concepts. 
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#broader">http://www.w3.org/TR/skos-reference/#broader</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#narrowerTransitive" title="Skos:narrowerTransitive"><code>skos:narrowerTransitive</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#Concept" title="Skos:Concept"><code>skos:Concept</code></a></td>
+			<td class="Description">It is a property used to assert a direct hierarchical link between two SKOS concepts. More specifically, it is used to both direct and indirect hierarchical links between concepts. It is the transitive version of skos:broader.
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#broaderTransitive">http://www.w3.org/TR/skos-reference/#broaderTransitive</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#notation" title="Skos:notation"><code>skos:notation</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral" title="Rdf:PlainLiteral"><code>rdf:PlainLiteral</code></a></td>
+			<td class="Description">It is an annotation property. According to the SKOS recommendation: "There is no restriction on the nature of this information, e.g., it could be plain text, hypertext, or an image; it could be a definition, information about the scope of a concept, editorial information, or any other type of information. ". 
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#notes">http://www.w3.org/TR/skos-reference/#notes</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#prefLabel" title="Skos:prefLabel"><code>skos:prefLabel</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral" title="Rdf:PlainLiteral"><code>rdf:PlainLiteral</code></a></td>
+			<td class="Description">The preferred and alternative labels are useful when generating or creating human-readable representations of a knowledge organization system. These labels provide the strongest clues as to the meaning of a SKOS concept.
+		<p>"A resource has no more than one value of skos:prefLabel per language tag."
+		</p>
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#labels">http://www.w3.org/TR/skos-reference/#labels</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#related" title="Skos:related"><code>skos:related</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#Concept" title="Skos:Concept"><code>skos:Concept</code></a></td>
+			<td class="Description">The property skos:related is used to assert an associative link between two SKOS concepts.
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#semantic-relations">http://www.w3.org/TR/skos-reference/#semantic-relations</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#relatedMatch" title="Skos:relatedMatch"><code>skos:relatedMatch</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#Concept" title="Skos:Concept"><code>skos:Concept</code></a></td>
+			<td class="Description">This property is used to state mapping (alignment) links between SKOS concepts in different concept schemes, where the links are inherent in the meaning of the linked concepts. More specifically, it is used to state an associative mapping link between two concepts.</td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#scopeNote" title="Skos:scopeNote"><code>skos:scopeNote</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral" title="Rdf:PlainLiteral"><code>rdf:PlainLiteral</code></a></td>
+			<td class="Description">It is an annotation property. According to the SKOS recommendation: "There is no restriction on the nature of this information, e.g., it could be plain text, hypertext, or an image; it could be a definition, information about the scope of a concept, editorial information, or any other type of information. ". 
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#notes">http://www.w3.org/TR/skos-reference/#notes</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#semanticRelation" title="Skos:semanticRelation"><code>skos:semanticRelation</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#Concept" title="Skos:Concept"><code>skos:Concept</code></a></td>
+			<td class="Description">It is the super property of all mapping and relationship properties. It is used to assert generic semantic relationships between concepts.</td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#topConceptOf" title="Skos:topConceptOf"><code>skos:topConceptOf</code></a></td>
+			<td>Zero-or-many</td>
+			<td>True</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/2004/02/skos/core#ConceptScheme" title="Skos:ConceptScheme"><code>skos:ConceptScheme</code></a></td>
+			<td class="Description">It serves to state that a concept is a root of a concept scheme.
+		Source: <a rel="nofollow" class="external free" href="http://www.w3.org/TR/skos-reference/#schemes">http://www.w3.org/TR/skos-reference/#schemes</a></td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/creator" title="Dcterms:creator"><code>dcterms:creator</code></a></td>
+			<td>One-or-many</td>
+			<td>True</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://xmlns.com/foaf/0.1/Agent"><code>foaf:Agent</code></a></td>
+			<td class="Description">The agents (people, organizations or tools) that have defined this concept.</td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/contributor" title="Dcterms:contributor"><code>dcterms:contributor</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://xmlns.com/foaf/0.1/Agent"><code>foaf:Agent</code></a></td>
+			<td class="Description">The agents (people, organizations or tools) that have contributed to the definition of this concept.</td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/created" title="Dcterms:created"><code>dcterms:created</code></a></td>
+			<td>Exactly-one</td>
+			<td>True</td>
+			<td>DateTime</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2001/XMLSchema#dateTimeStamp"><code>xsd:dateTimeStamp</code></a></td>
+			<td class="Description">The time in which this concept has been created.</td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/modified" title="Dcterms:modified"><code>dcterms:modified</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>DateTime</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2001/XMLSchema#dateTimeStamp"><code>xsd:dateTimeStamp</code></a></td>
+			<td class="Description">The moment in which this concept has been modified or redefined.</td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://www.w3.org/2004/02/skos/core#memberList" title="Skos:memberList"><code>skos:memberList</code></a></td>
+			<td>Exactly-one</td>
+			<td>False</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List" class="new" title="Rdf:List"><code>rdf:List</code></a></td>
+			<td class="Description">A list of skos concepts (ordered collection) that serves to specify the components of the pattern.</td>
+			
+		</tr>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/identifier" title="Dcterms:identifier"><code>dcterms:identifier</code></a></td>
+			<td>Exactly-one</td>
+			<td>True</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2001/XMLSchema#string" class="new" title="Xsd:string"><code>xsd:string</code></a></td>
+			<td class="Description">The unique identifier for this concept.</td>
+			
+		</tr>
+		</tbody>
+		</table>
+
+
 	
 	<h3>Relationship labels </h3>
 	<p>When an KM relationship property is to be presented in a user interface, it may be helpful to provide an informative and  useful textual label for that relationship instance. (This in addition to the relationship property URI and the object resource URI, which are also candidates for presentation to a user.) To this end, OSLC providers <strong>MAY</strong> suppport a dcterms:title link property in RM resource representations where a relationship property is permitted, using the anchor approach outlined in the OSLC Core Links Guidance.</p>
@@ -393,7 +760,7 @@
 		<li> For RDF/XML and XML, use <code>rdf:Description</code> and <code>rdfs:member</code> as defined by <a href="/bin/view/Main/OSLCCoreSpecAppendixRepresentations#RDF_XML_Examples">Core Specification Appendix B:Representations and Examples - RDF/XML Examples</a>.</li> 
 		<li> For JSON the query results are contained within <code>oslc:resutls</code> array. See <a href="/bin/view/Main/OSLCCoreSpecAppendixRepresentations#Guidelines_for_JSON">Core Specification Appendix B: Representations and Examples - Guidelines for JSON</a>.</li>
 	</ul> 
-	<p>The stability of query results is OPTIONAL (see <a href="/bin/view/Main/OslcCoreSpecification" class="twikiLink">Core Specification Version 2.0 - Stable Paging</a>)</p>.
+	<p>The stability of query results is OPTIONAL (see <a href="/bin/view/Main/OslcCoreSpecification" class="twikiLink">Core Specification Version 2.0 - Stable Paging</a>).</p>
 
 	<h3>Delegated UIs </h3>
 	<p>OSLC KM service providers <strong>MUST</strong> support the selection and creation of resources by delegated web-based user interface dialogs <a href="/bin/view/Main/OslcCoreSpecification#Delegated_User_Interface_Dialogs">Delegated UIs</a> as defined by OSLC Core.</p>
@@ -431,7 +798,36 @@
       </p>
     </section>
 	 <section class='appendix'>
-      <h2>References</h2>
+	  <h2>References</h2>
+	  <ol>
+		<li>D. Morey, M. T. Maybury, and B. M. Thuraisingham, Knowledge management: classic and contemporary works. Cambridge, Mass.: MIT Press, 2002.</li>
+		<li>I. Nonaka and H. Takeuchi, The knowledge-creating company: How japanese companies create the dynamics of innovation. New York: Oxford University Press, 1995.
+		<li>D. Grey, “Knowledge vs Information.” 1996.
+		<li>G. Dosi, R. Nelson, and S. Winter, The nature and dynamics of organizational capabilities. Oxford University Press, 2000.
+		<li>T. H. Davenport and L. Prusak, Working knowledge: how organizations manage what they know. Boston, Mass.: Harvard Business School Press, 2000.
+		<li>Open University, Managing knowledge: an essential reader, 2nd ed. Thousand Oaks, CA: SAGE Publications, 2005.
+		<li>S. M, “Keynote address to ICICKM (International Conference on Intellectual  Capital, Knowledge Management and Organisational Learning,” 2008.
+		<li>S. McIntyre, M. Gauvin, and B. Waruszynski, “Knowledge management in the military context,” Can. Mil. J., vol. 4, no. 1, pp. 35–40, 2003.
+		<li>R. Hull and R. King, “Semantic database modeling: Survey, applications, and research issues,” ACM Comput. Surv. CSUR, vol. 19, no. 3, pp. 201–260, 1987.
+		<li>R. Davis, H. Shrobe, and P. Szolovits, “What is a knowledge representation?,” AI Mag., vol. 14, no. 1, p. 17, 1993.
+		<li>T. Groza, S. Handschuh, T. Clark, S. Buckingham Shum, and A. de Waard, “A short survey of discourse representation models,” 2009.
+		<li>P. Hayes, “RDF Semantics,” World Wide Web Consortium, Feb. 2004.
+		<li>J. Llorens, J. Morato, and G. Genova, “RSHP: an information representation model based on relationships,” in Soft Computing in Software Engineering, vol. 159, E. Damiani, M. Madravio, and L. Jain, Eds. Springer Berlin Heidelberg, 2004, pp. 221–253.
+		<li>I. Dı́az, J. Llorens, G. Genova, and J. M. Fuentes, “Generating domain representations using a relationship model,” Inf. Syst., vol. 30, no. 1, pp. 1–19, Mar. 2005.
+		<li>The Reuse Company Inc., “knowlegeMANAGER (KM),” knowledgeMANAGER, 2014. .
+		<li>K. E. Wiegers, Software Requirements, 2nd ed. Redmond, WA, USA: Microsoft Press, 2003.
+		<li>T. R. Gruber, “A Translation Approach to Portable Ontology Specifications,” Knowl Acquis, vol. 5, no. 2, pp. 199–220, Jun. 1993.
+		<li>N. Guarino, “Formal Ontology, Conceptual Analysis and Knowledge Representation,” Int J Hum-Comput Stud, vol. 43, no. 5–6, pp. 625–640, Dec. 1995.
+		<li>D. Beckett, “RDF/XML Syntax Specification (Revised),” W3C, W3C Recommendation, 2008.
+		<li>S. Powers, Practical RDF. Beijing ; Sebastopol: O’Reilly, 2003.
+		<li>N. Noy and A. Rector, “Defining N-ary Relations on the Semantic Web,” W3C Working Group, 2006.
+		<li>V. Nguyen, O. Bodenreider, and A. Sheth, “Don’t like RDF reification?: making statements about statements using singleton property,” 2014, pp. 759–770.
+		<li>A. Mallea, M. Arenas, A. Hogan, and A. Polleres, “On blank nodes,” in The Semantic Web–ISWC 2011, Springer, 2011, pp. 421–437.
+		<li>M. Arenas, A. Bertails, E. Prud’hommeaux, and J. Sequeda, “A Direct Mapping of Relational Data to RDF http://www.w3.org/TR/rdb-direct-mapping/,” 2012.
+
+
+	  </ol>
+      <h2>OSLC Specifications-References</h2>
       <ul>
 		<li> OSLC Core - <a href="/bin/view/Main/OslcCoreSpecification">OSLC Core Specification 2.0</a></li>	
 		<li> Dublin Core 1.1 - <a href="http://dublincore.org/documents/2010/10/11/dces/" target="_top">Dublin Core Metadata Element Set, Version 1.1</a></li> 
