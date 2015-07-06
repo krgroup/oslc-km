@@ -77,11 +77,7 @@
           // !!!! IMPORTANT !!!! MAKE THE ABOVE BLINK IN YOUR HEAD
       };
     </script>
-	<style>
-		p{text-align:justify}
-		ul li{text-align:justify}
-		ol li{text-align:justify}
-	</style>
+
   </head>
   <body>
     <section id='abstract'>
@@ -385,9 +381,253 @@
 		</li>
 	</ul> 
 	<h2>KM Resources</h2>
-	<p>
+	<h3>Artifact Resource</h3>
 	
-	</p>
+	<table class="table table-striped table-bordered table-condensed">
+	
+		<thead>
+		<tr><th>Prefixed Name</th>
+		<th>Occurs</th>
+		<th>Read-only</th>
+		<th>Value-type</th>
+		<th>Representation</th>
+		<th>Range</th>
+		<th>Description</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/identifier" title="Dcterms:identifier"><code>dcterms:identifier</code></a></td>
+			<td>Exactly-one</td>
+			<td>True</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" title="Rdfs:Literal"><code>rdfs:Literal</code></a></td>
+			<td>The unique identifier for this artifact.</td>
+		</tr>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/title" title="Dcterms:title"><code>dcterms:title</code></a></td>
+			<td>One-or-many</td>
+			<td>True</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" title="Rdfs:Literal"><code>rdfs:Literal</code></a></td>
+			<td>The title of the artifact used to display a name.</td>
+		</tr>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/description" title="Dcterms:description"><code>dcterms:description</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" title="Rdfs:Literal"><code>rdfs:Literal</code></a></td>
+			<td>The long description of this artifact that must be explanatory enough to understand what the artifact contains and is used to.</td>
+		</tr>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/created" title="Dcterms:created"><code>dcterms:created</code></a></td>
+			<td>Exactly-one</td>
+			<td>True</td>
+			<td>DateTime</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2001/XMLSchema#dateTimeStamp"><code>xsd:dateTimeStamp</code></a></td>
+			<td>The date and time in which the artifact was created. The range is restricted to a data time stamp, although the Dublin Core allows us to use any rdfs:Literal.
+		See: <a rel="nofollow" class="external free" href="http://dublincore.org/documents/dcmi-terms/#terms-created">http://dublincore.org/documents/dcmi-terms/#terms-created</a></td>
+		</tr>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/modified" title="Dcterms:modified"><code>dcterms:modified</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>DateTime</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2001/XMLSchema#dateTimeStamp"><code>xsd:dateTimeStamp</code></a></td>
+			<td>The moment in which the artifact was modified or redefined. The range is restricted to a data time stamp, although the Dublin Core allows us to use any rdfs:Literal.
+		See: <a rel="nofollow" class="external free" href="http://dublincore.org/documents/dcmi-terms/#terms-created">http://dublincore.org/documents/dcmi-terms/#terms-created</a></td>
+
+		</tr>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/creator" title="Dcterms:creator"><code>dcterms:creator</code></a></td>
+			<td>One-or-many</td>
+			<td>True</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://xmlns.com/foaf/0.1/Agent"><code>foaf:Agent</code></a></td>
+			<td>The agents (people, organizations or tools) that have defined this artifact.</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios km:term"><code>Ios_km:term</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
+			<td>The lexical form of this artifact (apart from title and description). It is an URI to a concept.</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios_km:artifact type"><code>Ios_km:artifact-type</code></a></td>
+			<td>Zero-or-one</td>
+			<td>True</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
+			<td>A link to a concept describing the type of this artifact. E.g. "Class Diagram"</td>
+
+		</tr>
+		<tr>
+			<td><a href="#rshps" title="Ios_km:rshps"><code>Ios_km:rshps</code></a></td>
+			<td>Exactly-one</td>
+			<td>False</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List" title="Rdf:List"><code>rdf:List</code></a></td>
+			<td>A list of relationships between the concepts within the artifact. Similar to skos:member (actually it is a kind of syntax sugar and the meaning of this property and skos:member is the same).</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios_km:metaproperties"><code>Ios_km:metaproperties</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List" title="Rdf:List"><code>Rdf:List</code></a></td>
+			<td>A list of metaproperties for this artifact identifed by tag and value. It is a kind of wrapper for two concepts.</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios_km:owned_artifacts"><code>Ios_km:owned-artifacts</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List" title="Rdf:List"><code>rdf:List</code></a></td>
+			<td>A list of artifacts that belongs to this artifact. It is similar to skos:member and skos:inScheme but with artifacts instead of concept schemes.</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios_km:alt visualization"><code>Ios_km:alt-visualization</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td>N/A (Not applicable)</td>
+			<td>The alternative visual representation of this artifact using SVG+CSS.</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios_km:preferred visualization"><code>Ios_km:preferred-visualization</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td>N/A (Not applicable)</td>
+			<td>The preferred visual representation of this artifact using SVG+CSS.</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios_km:interpretation"><code>Ios_km:interpretation</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td>N/A (Not applicable)</td>
+			<td>A complete interpretation of this artifact through a concept description. E.g. Class diagram, etc.</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios_km:traced-by"><code>Ios_km:traced-by</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource" title="Rdf:Resource "><code>Rdf:Resource</code></a></td>
+			<td>A resource that traces this artifact.</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios_km:traces-to"><code>Ios_km:traces-to</code></a></td>
+			<td>Zero-or-many</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource" title="Rdf:Resource "><code>Rdf:Resource</code></a></td>
+			<td>A resource that is being traced by this artifact.</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios_km:trace type"><code>Ios_km:trace-type</code></a></td>
+			<td>Exactly-one</td>
+			<td>True</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
+			<td>A link to a concept that explains how the trace has been created, etc. This element must be linked to the "trace" node (if any).</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios kpi:dataset"><code>Ios kpi:dataset</code></a></td>
+			<td>Zero-or-many</td>
+			<td>True</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://purl.org/linked-data/cube#Dataset" title="Qb:Dataset "><code>Qb:Dataset</code></a></td>
+			<td>The link to the datasets that contain observations that can affect this artifact. E.g. if a requirement is an artifact, the requirements quality observations would be the dataset linked to the artifact in a certain moment of time.</td>
+
+		</tr>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/source" title="Dcterms:source"><code>dcterms:source</code></a></td>
+			<td>Zero-or-many</td>
+			<td>True</td>
+			<td>Resource</td>
+			<td>Reference</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource" title="Rdf:Resource "><code>Rdf:Resource</code></a></td>
+			<td>The set of documents that explains why this artifact should be explained.</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios_km:access"><code>Ios_km:access</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td>N/A</td>
+			<td>A link to a resource describing how to access to a HTTP-based resource for gathering contents and convert into an artifact. The W3C HTTP vocabulary (a W3C note) is used to represent the information of an HTTP request.</td>
+
+		</tr>
+		<tr>
+			<td><a href="Oslc:valueShape" title="Oslc:valueShape"><code>oslc:valueShape</code></a></td>
+			<td>Exactly-one</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource"  title="Rdf:Resource"><code>rdf:Resource</a></td>
+			<td>A link to an URI that contains the shape of this artifact.</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios_km:contents"><code>Ios_km:contents</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" title="Rdfs:Literal"><code>rdfs:Literal</code></a></td>
+			<td>A literal representing the contents of any artifact in RDF. These contents are interpreted following the shape that must be also presented in the description of the artifact.</td>
+
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios_km:sparql endpoint"><code>Ios_km:sparql-endpoint</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/2001/XMLSchema#anyURI" title="Xsd:anyURI"><code>xsd:anyURI</code></a></td>
+			<td>An URI pointing to a SPARQL endpoint from which the contents of an artifact will be gathered through a DESCRIBE query.</td>
+
+		</tr>
+		</tbody>
+		</table>
+	
+	<h3>Concept Resource</h3>
 	
 	<table class="table table-striped table-bordered table-condensed">
 		<thead>
@@ -710,7 +950,7 @@
 			<td>False</td>
 			<td>Either Resource or Local Resource</td>
 			<td>Either Reference or Inline</td>
-			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List" class="new" title="Rdf:List"><code>rdf:List</code></a></td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List" title="Rdf:List"><code>rdf:List</code></a></td>
 			<td class="Description">A list of skos concepts (ordered collection) that serves to specify the components of the pattern.</td>
 			
 		</tr>
@@ -725,10 +965,108 @@
 			
 		</tr>
 		</tbody>
+	</table>
+
+	<h3>RSHP Resource</h3>
+		
+	<table class="table table-striped table-bordered table-condensed">
+	<thead>
+	
+	<tr><th>Prefixed Name</th>
+	<th>Occurs</th>
+	<th>Read-only</th>
+	<th>Value-type</th>
+	<th>Representation</th>
+	<th>Range</th>
+	<th>Description</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/identifier" title="Dcterms:identifier"><code>dcterms:identifier</a></td>
+			<td>Exactly-one</td>
+			<td>True</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" title="Rdfs:Literal"><code>rdfs:Literal</code></a></td>
+			<td>The unique identifier for this RSHP. It is now an string but it would be better a skos:Concept to avoid broken links between pieces of data.</td>
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios km:semantics"><code>Ios_km:semantics</code></a></td>
+			<td>Zero-or-one</td>
+			<td>True</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" title="Rdf:Property"><code>rdf:Property</code></a></td>
+			<td>The concept (property) that represents the semantics of this relationship.</td>
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios km:from"><code>Ios_km:from</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List title="Rdf:List"><code>rdf:List</code></a></td>
+			<td>The list of concepts from which a relationship is created. It is similar to skos:member but a new name used to provide a more meaningful name.
+		Status: the name of this property is still open.</td>
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios km:to"><code>Ios_km:to</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List title="Rdf:List"><code>rdf:List</code></a></td>
+			<td>The list of concepts to which a relationship is created. It is similar to skos:member but a new name used to provide a more meaningful name.
+		Status: the name of this property is still open.</td>
+		</tr>
+		</tbody>
+		</table>
+		
+	<h3>Metaproperty Resource</h3>
+	
+	<table class="table table-striped table-bordered table-condensed">
+		<thead>
+		<tr><th class="Prefixed-Name">Prefixed Name</th>
+		<th>Occurs</th>
+		<th>Read-only</th>
+		<th>Value-type</th>
+		<th>Representation</th>
+		<th>Range</th>
+		<th>Description</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr class="row-odd">
+			<td><a href="http://purl.org/dc/terms/identifier" title="Dcterms:identifier"><code>dcterms:identifier</code></a></td>
+			<td>Exactly-one</td>
+			<td>True</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" title="Rdfs:Literal"><code>rdfs:Literal</code></a></td>
+			<td>The unique identifier for this metaproperty</td>
+		</tr>
+		<tr class="row-even">
+			<td ><a href="#" title="Ios km:tag"><code>Ios km:tag</code></a></td>
+			<td>Exactly-one</td>
+			<td>False</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
+			<td>A tag for this metaproperty represented through a concept or even any resource.</td>
+		</tr>
+		<tr class="row-odd">
+			<td ><a href="#" title="Ios km:value"><code>Ios km:value</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
+			<td>A value for this metaproperty represented through a concept or even any resource.</td>
+		</tr>
+		</tbody>
 		</table>
 
 
-	
 	<h3>Relationship labels </h3>
 	<p>When an KM relationship property is to be presented in a user interface, it may be helpful to provide an informative and  useful textual label for that relationship instance. (This in addition to the relationship property URI and the object resource URI, which are also candidates for presentation to a user.) To this end, OSLC providers <strong>MAY</strong> suppport a dcterms:title link property in RM resource representations where a relationship property is permitted, using the anchor approach outlined in the OSLC Core Links Guidance.</p>
 	<p>Providers and consumers should be aware that the dcterms:title of a link is unrelated to the dcterms:title of the object resource. Indeed, links may carry other properties with names in common to the object of the link, but there is no specified relationship between these property values.</p>
@@ -827,6 +1165,8 @@
 
 
 	  </ol>
+	  </section>
+	   <section class='appendix'>
       <h2>OSLC Specifications-References</h2>
       <ul>
 		<li> OSLC Core - <a href="/bin/view/Main/OslcCoreSpecification">OSLC Core Specification 2.0</a></li>	
@@ -843,6 +1183,22 @@
 		<li> HTML presentation of the RDFS Schema of the OSLC KM V1.0 Specification Vocabulary - <a href="FIXME"KMSpecificationVocabularyV2</a>.</li>
 		</ul> 
     </section>
-	
+		<style>
+		body {
+			
+			  padding: 2em 1em 2em 70px;
+			  margin: 0;
+			  font-family: sans-serif;
+			  color: black;
+			  background: white;
+			  background-image: url("./imgs/body-type.png");
+			  background-position: top left;
+			  background-attachment: fixed;
+			  background-repeat: no-repeat;
+		}
+		p{text-align:justify}
+		ul li{text-align:justify}
+		ol li{text-align:justify}
+	</style>
   </body>
 </html>
