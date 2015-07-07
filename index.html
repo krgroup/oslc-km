@@ -126,8 +126,15 @@
 	  </p>
 	  
 	  <p>In this sense, one of the cornerstones to provide the proper knowledge management services lies on the selection of an adequate knowledge representation paradigm. After a long time [9], this problem still persists since the choice of a suitable representation format (and syntax) can be reached in several ways. Obviously, different types of knowledge require different types of representation [10] [11] including a type of inference process and a target type of dynamic system. In this light, expressions, rule-based systems, regular grammars, semantic networks, object-oriented representations, frames, intelligent agents or case-based models to name a few are some of the main approaches to information and knowledge modeling.</p>
+	  
+	  <p style="text-align:center">
+	  <img src="imgs/semantic-web-stack-2005.png" width="20%"/> <img src="imgs/semantic-web-stack-2015.png" width="20%"/> <br/>
+	   Figure 2: Semantic Web Stack (2005-The Two Towers) vs Semantic Web Stack (2015)
+	  </p>
+	  
+	  
 	  <p>More specifically, knowledge management implies the standardization of data and information, that is, any bit of information must be structured and stored for supporting other application services, creating an impedance mismatch between the system and the outside world. In this sense, semantic networks seem to be a very good candidate to represent any general knowledge item with the aim of describing and linking different types of information using relationships. In particular, two main approaches can be highlighted for the purpose of knowledge representation (input/output interface and internal representation in the context of Systems Engineering):</p>
-<ul>
+	<ul>
 	  	<li><strong>The Resource Description Framework [12] (RDF)</strong> is a framework for representing information resources in the Web using a directed graph data model. The core structure of the abstract syntax is a set of triples, each consisting of a subject, a predicate and an object. A set of such triples is called an RDF graph. AN RDF graph can be visualized as a node and directed-arc diagram, in which each triple is represented as a node-arc-node link. Assume there are a pairwise disjoint unlimited sets I (IRIs- Internationalized Resource Identifier), B (Blank nodes) and L (Literales). A triple (s,p,o) &epsilon; (I∪B)  × I × (I ∪ B ∪ L)  is called an RDF triple. In this triple, s is the subject,p the predicate and o the object. According to this definition an RDF triple encodes an RDF statement, a simple logical expression and an RDF graph is the conjunction (logical AND) of its triples. An IRI within an RDF is a UNICODE string to uniquely represent an information resource. A blank node is a local resource identified by an IRI and a literal in an RDF graph consists of two main elements: 
 		<ul>
 			<li>a lexical form, being a UNICODE string, a data type IRI, being an IRI to identifying a data type that determines how the lexical form maps to a literal value and if and only if the data IRI is rdf:langString and</li>
@@ -135,8 +142,22 @@
 		</ul>
 		<p>RDF has been used as underlying data model for building RDFS/OWL ontologies, gaining momentum in the web-based environment due to the explosion of the Semantic Web and Linked Data initiatives that aim to represent and exchange data (and knowledge) between agents and services under the web-based protocols.</p>
 		</li>
+		
+		 <li><strong>RDF Schema (RDFS)</strong> provides a data-modeling vocabulary for RDF data. It can be seen as a first try to support the creation of formal and simple ontologies with RDF syntax. RDFS is a formal and simple ontology language in which it is possible to define class and property hierarchies, as well as domain and range constraints for properties. One of the benefits of this property-centric approach is that it allows anyone to extend the description of existing resources. 
+	  
+		</li>
+		
+		<li><p><strong>OWL (Ontology Web Language)</strong> is an ontology language for capturing meaningful generalizations about data in the Web. It includes additional constructors for building richer class and property descriptions (vocabulary) and new axioms (constraints), along with a formal semantics.  OWL 1.1 consists of three sub-languages with different levels of expressivity: 1) OWL Lite, 2) OWL DL (Description Logic) and 3) OWL Full. </p>
+		<p>The OWL 2.0 family defines three different profiles: OWL 2 EL (Expressions Language), OWL 2 QL (Query Language) and OWL RL (Rule Language). These profiles can be seen as a syntactic restriction of the OWL 2 Structural Specification and more restrictive than OWL DL. The use of profiles is motivated by the needs of different computational processes. OWL EL is designed for enabling reasoning tasks in polynomial time. The main aim of OWL 2 QL is to enable conjunctive queries to be answered in LogSpace using standard relational database technology. Finally, OWL 2 RL is intended to provide a polynomial time reasoning algorithm using rule-extended database technologies operating directly on RDF triples. In conclusion, OWL 2.0 adds new functionalities regarding OWL 1.x. Most of them are syntactic sugar but others offer new expressivity : keys, property chains, richer datatypes, data ranges, qualified cardinality restrictions, asymmetric, reflexive, and disjoint properties; and enhanced annotation capabilities</p>
+		
+		</li>
+		
+		<li><strong>RIF Core (Rule Interchange Format)</strong> comprises a set of dialects to create a standard for exchanging rules among rule systems, in particular among Web rule engines. RIF was designed for exchanging rather than developing a single one-fits-all rule language. RIF dialects fall into three broad categories: first-order logic, logic-programming, and action rules. The family of dialects comprises: 1) logic-based dialects (RIF-BLD) including languages that employ some kind of logic such as First Order Logic (usually restricted to Horn Logic) or non-first-order logics; 2) rules-with-actions (RIF-PRD) dialects comprising rule systems such as Jess, Drools and JRules as well as event-condition-action rules such as Reaction RuleML and XChange. RIF also defines compatibility with OWL and serialization using RDF.
+		</li>
+		
+		
 		<li>
-			<strong>The RSHP (RelationSHip, pronounced <em>arship</em>.)  knowledge representation model</strong> [13] [14] is a universal representation schema for representing all kinds of documents/models/resources produced by industrial organizations using a conceptual graph model. RSHP is based on the ground idea that whatever information can be described as a group of relationships between concepts. Therefore, the leading element of an information unit is the relationship. For example, Entity/Relationship data models are certainly represented as relationships between entity types; software object models can also be represented as relationships among objects or classes; in the process modeling area, processes can be represented as causal/sequential relationships between sub-processes. Moreover, UML or SysML meta-models can also be modeled as a set of relationships between meta-model elements. RSHP also includes a repository model to store information and relationships with the aim of reusing all kind of knowledge chunks. Furthermore, free text information can certainly be represented as relationships between terms by means of the same structure. Indeed, to represent human language text, a set of well-constructed sentences, including the subject+verb+predicate (SVP) should be used. The SVP structure can be then considered as a relationship typed V between the S and the predicated P. More specifically, the RSHP formal representation model, see Figure 2 , is based on the following principles: 
+			<strong>The RSHP (RelationSHip, pronounced <em>arship</em>.)  knowledge representation model</strong> [13] [14] is a universal representation schema for representing all kinds of documents/models/resources produced by industrial organizations using a conceptual graph model. RSHP is based on the ground idea that whatever information can be described as a group of relationships between concepts. Therefore, the leading element of an information unit is the relationship. For example, Entity/Relationship data models are certainly represented as relationships between entity types; software object models can also be represented as relationships among objects or classes; in the process modeling area, processes can be represented as causal/sequential relationships between sub-processes. Moreover, UML or SysML meta-models can also be modeled as a set of relationships between meta-model elements. RSHP also includes a repository model to store information and relationships with the aim of reusing all kind of knowledge chunks. Furthermore, free text information can certainly be represented as relationships between terms by means of the same structure. Indeed, to represent human language text, a set of well-constructed sentences, including the subject+verb+predicate (SVP) should be used. The SVP structure can be then considered as a relationship typed V between the S and the predicated P. More specifically, the RSHP formal representation model, see Figure 3 , is based on the following principles: 
 			<ol>
 				<li>The main description element is the relationship since it is the element in charge of linking knowledge elements. </li>
 				<li>A Knowledge Element (KE) is an atomic knowledge component that appears into an artifact and that is linked by one or more relationships with other KEs to build information. It is defined by a concept, and it can also be an artifact (an information container found inside a wider artifact). A concept is represented by a normalized term (a keyword coming from a controlled vocabulary, or domain). Artifacts are knowledge containers of KEs and their relationships.</li>
@@ -147,22 +168,45 @@
 		
 		 <p style="text-align:center">
 	  <img src="imgs/RSHP.png" width="50%"/> <br/>
-	   Figure 2: The RSHP representation model using UML.
+	   Figure 3: The RSHP representation model using UML.
 	  </p>
 	  
+	
+		</ul>
+		
+		<p>Obviously, a plethora of other knowledge representation mechanisms and paradigms can be found as it is presented below. However, we focus here on comparing those that satisfy the three basic requirements of this study: 1) a language for representing any artifact metadata and contents; 2) a system for indexing and retrieval and 3) a standard input/output interface (data shape+REST+RDF) to share and exchange artifact metadata and contents.</p>
+		<ul>
+			<li>The SBVR (Semantics of Business Vocabulary and Rules). It is an OMG standard to define the basis for formal and detailed natural language declarative description of a complex entity.</li>
+			<li>The Ontology Definition Metamodel (ODM). It is an OMG standard for knowledge representation, conceptual modeling, formal taxonomy development and ontology definition. It enables the use of a variety of enterprise models as starting points for ontology development through mappings to UML and MOF. ODM-based ontologies can be used to support: 1) interchange of knowledge; 2) representation of knowledge in ontologies and knowledge bases; and 3) specification of expressions that are the input to, or output from, inference engines.</li>
+			<li>The Reusable Asset Specification (RAS), an OMG standard that addresses the engineering elements of reuse. It attempts to reduce the friction associated with reuse transactions through consistent, standard packaging. </li>
 		</ul>
 
-	<h3>Discussion</h3>
+	<h3>Discussion and Evaluation</h3>
 	<p>As a summary of both approaches, Table 1 shows the main characteristics and capabilities that can be found in RDF and RSHP with special focus on those regarding knowledge management and, more specifically knowledge representation. Nevertheless, the main difference lies on the expressivity, the underlying data model and the operations they support:</p>
 	<ol>
 		<li>RDF is based on a directed graph and can only represent binary relationships (unless reification and blank nodes are used) while RSHP is based on an undirected graph and it can natively represent N-ary relationships.</li>
 		<li>RDF is built on two main concepts: resources and literals. Nevertheless, a literal value cannot be used as the subject of an RDF triple. Although this issue can be overcame using a blank node (or even reification) and the property rdf:value, it also adds extra complexity for agents that are going to generate and process RDF. In RSHP it is possible to create a relationship between a literal value (a knowledge element) as another resource.</li>
 		<li>Although RDF provides the concept of container to link a resource to a set of elements (rdf:Bag, rdf:Seq or rdf:Alt), a property linking to a container does not intrinsically mean composition or aggregation that is very useful when specifying the structure of a work product. On the other hand, RSHP representation model provides constructors to express these kind of relationships.</li>
 		<li>There is also a lack of tools natively working on RDF. General speaking, RDF was conceived to exchange information over the web so, although  some RDF repositories can provide capabilities for indexing and searching RDF resources through an SPARQL interface, the experience has demonstrated that most of times RDF is translated into the native data model of a tool. Thus, the possibility of supporting cross-cutting services such as semantic indexing and retrieval processes is constrained by the native capabilities and data models of third-party tools.</li>
-		<li>Other minor differences such as target design and use, underlying semantics, query language and storage are also relevant but somehow compatible. </li>
+		<li>RDFS is a good candidate for modeling lightweight formal ontologies including some interesting capabilities close to object-oriented models. It can be serialized as RDF, but this issue can also be a disadvantage due to expressivity restrictions of RDF. Again, RDFS has been designed for expressing logical statements that describe web resources, so its use for other types of information is not advisable. </li>
+		<li>Building on the previous discussion, OWL presents a family of logic dialects for knowledge representation. It is based on strong logic formalisms such as Description Logic or F-Logic. It was also designed for asserting facts about web resources although it can be used as a general logic framework for any type of knowledge. One of the main advantages of OWL is the possibility of performing reasoning processes to check consistency or infer types. However, reasoning can be considered harmful in terms of performance and most of times it is not necessary when data is being exchanged. Besides, OWL is not the best candidate for data validation, a key process in knowledge exchange. </li>
+		<li>RIF Core and the family of RIF dialects have been included in this comparison due to the fact that most of domain knowledge is embedded in rules. Nevertheless, RIF was not designed for data validation and its acceptance is still low (just a few tools export RIF and less are capable of importing RIF files). On the other hand, RIF makes use of the web infrastructure to exchange rules, what means also that this environment is a very good candidate to exchange data, information and knowledge.</li>
+		<li>RSHP, based on relationships, allows domain experts to create relationships between terms, concepts or even artifacts (containers). It provides a framework for knowledge representation with capabilities for expressing any kind of cardinality and N-ary relationships. RSHP is based on undirected property graphs, enhancing expressivity. Although it has not been directly designed for data validation, its metamodel allows the possibility of checking cardinality, value, domain and range restrictions. One of the strong points of RSHP is the native support of a tool such as knowledgeMANAGER and the possibility of automatically providing semantic indexing and retrieval mechanisms. Both have generated a strong acceptance and implantation in the industry for requirements authoring and quality checking. As minor drawbacks, this tool was not conceived to be used in a web environment and it is not a standard; nevertheless, it can export/import RDFS and OWL ontologies.</li>
+		</ul>
+		<p>Finally, as a general comment, there is also a lack of tools working natively on RDF. Generally speaking, RDF was conceived to exchange information over the web. Although some RDF repositories can provide capabilities for indexing and searching RDF resources through an SPARQL interface, the experience has demonstrated that most of times RDF is translated into the native data model of a tool. Thus, the possibility of supporting cross-cutting services such as semantic indexing and retrieval processes is constrained by the native capabilities and data models of third-party tools.</p>
+
+	
+		<p>Other minor differences such as target design and use, underlying semantics, query language and storage are also relevant but somehow compatible. </p>
 	</ul>
 
-		<p>In addition to these points, it is also necessary to remark that RDFS (RDF Schema) and OWL (Ontology Web Language) were defined as frameworks to provide constructors or primitives to design formal ontologies (with some underlying logics) that can be serialized in RDF. However, shapes or schemes for managing RDF as a data model (not as a set of logical statements) are still under development (see row “Validation” in Table 1).</p>
+		<p>In addition to these points, it is also necessary to remark that RDFS (RDF Schema) and OWL (Ontology Web Language) were defined as frameworks to provide constructors or primitives to design formal ontologies (with some underlying logics) that can be serialized in RDF. However, shapes or schemes for managing RDF as a data model (not as a set of logical statements) are still under development (see row “Validation” in the next Figure or <a href="./sources/Comparative-Table.pdf">PDF file</a>).</p>
+		
+		 <p style="text-align:center">
+				<img src="imgs/comparison-1.png" width="50%"/> <br/>
+				<img src="imgs/comparison-2.png" width="50%"/> <br/>
+		</p>
+	  
+	  
     </section>
 	
 	
@@ -234,14 +278,14 @@
 		
 		 <p style="text-align:center">
 		  <img src="imgs/FunctionalArchitecture.png" width="90%">  <br/>
-		   Figure 3: Functional Architecture and core services for knowledge management based on the OSLC KM specification.
+		   Figure 5: Functional Architecture and core services for knowledge management based on the OSLC KM specification.
 		  </p>
 	  
 	  
 		
 	  <h2>Terminology</h2>
       <p>
-       The RSHP representation model has been presented in Figure 2. In order to simplify the external view of this model and ease the creation of an OSLC Resource Shape, two main changes, (see Figure 4), have been made in the representation model:
+       The RSHP representation model has been presented in Figure 3. In order to simplify the external view of this model and ease the creation of an OSLC Resource Shape, two main changes, (see Figure 6), have been made in the representation model:
       </p>
 
 	  <ol>
@@ -251,10 +295,10 @@
 	  
 	 <p style="text-align:center">
 	  <img src="imgs/KM.png" width="50%"/> <br/>
-	   Figure 4: The KM representation model using UML as simplification of the RSHP representation model.</p>
+	   Figure 6: The KM representation model using UML as simplification of the RSHP representation model.</p>
 	  </p>
 	  
-	  <p>It is important to highlight the strategy followed to model the resource shapes of the elements presented in Figure 5. Taking into account that the Linked Data Initiative has seen last times the creation of methodologies, guidelines or recipes to publish RDF-encoded data, we have paid special attention to follow a similar approach reusing existing RDF-based vocabularies. More specifically, the following rules have been applied to create the OSLC resource shapes:</p>
+	  <p>It is important to highlight the strategy followed to model the resource shapes of the elements presented in Figure 6. Taking into account that the Linked Data Initiative has seen last times the creation of methodologies, guidelines or recipes to publish RDF-encoded data, we have paid special attention to follow a similar approach reusing existing RDF-based vocabularies. More specifically, the following rules have been applied to create the OSLC resource shapes:</p>
 	  <ul>
 	  <li>If there is an RDF-based vocabulary that is already a W3C recommendation or it is being promoted by other standards organization, it must be used as it is creating an OSCL Resource Shape.</li>
 	  <li>If there is an RDF-based vocabulary but it is just a de-facto standard, it should be used as it is including minor changes creating an OSCL Resource Shape.</li>
@@ -1204,9 +1248,9 @@
 	<section>
 	<h2>KM Service Provider Capabilities </h2>
 	<h3>Service Provider Resources </h3>
-	<p>Service providers <strong>MUST</strong> provide one or more <code>oslc:ServiceProvider</code> resources as defined by <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Service_Provider_Resources">Core Specification Version 2.0 - Service Provider Resource</a>. Discovery of OSLC Service Provider Resources <strong>MAY</strong> be via one or more OSLC Service Provider Catalog Resources, or may be discovered by some other and/or additional Provider-specific means outwith the scope of this specification. The <code>oslc:Service</code> resources referenced by this <code>oslc:ServiceProvider</code> <strong>MUST</strong> have an <code>oslc:domain</code> of <code>http://open-services.net/ns/rm#</code>.</p>
+	<p>Service providers <strong>MUST</strong> provide one or more <code>oslc:ServiceProvider</code> resources as defined by <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Service_Provider_Resources">Core Specification Version 2.0 - Service Provider Resource</a>. Discovery of OSLC Service Provider Resources <strong>MAY</strong> be via one or more OSLC Service Provider Catalog Resources, or may be discovered by some other and/or additional Provider-specific means outwith the scope of this specification. The <code>oslc:Service</code> resources referenced by this <code>oslc:ServiceProvider</code> <strong>MUST</strong> have an <code>oslc:domain</code> of <code>http://ios.crystal-artemis.eu/ns/km/</code>.</p>
 	
-	<p>Service providers <strong>MAY</strong> provide one more more <code>oslc:ServiceProviderCatalog</code> resources as defined by <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Service_Provider_Catalog_Resources">Core Specification Version 2.0 - Service Provider Resources</a>. Any such catalog resources <strong>MUST</strong> include at least one <code>oslc:domain</code> of <code>http://open-services.net/ns/rm#</code>. Discovery of top-level OSLC Service Provider Catalog Resources is outwith the scope of this specification.
+	<p>Service providers <strong>MAY</strong> provide one more more <code>oslc:ServiceProviderCatalog</code> resources as defined by <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Service_Provider_Catalog_Resources">Core Specification Version 2.0 - Service Provider Resources</a>. Any such catalog resources <strong>MUST</strong> include at least one <code>oslc:domain</code> of <code>http://ios.crystal-artemis.eu/ns/km/</code>. Discovery of top-level OSLC Service Provider Catalog Resources is outwith the scope of this specification.
 	</p>
 	<p>Service providers <strong>MUST</strong> give an <code>oslc:serviceProvider</code> property on all OSLC Defined Resources. This property <strong>MUST</strong> refer to an appropriate <code>oslc:ServiceProvider</code> resource.
 	</p>
