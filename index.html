@@ -163,8 +163,64 @@
 	</ul>
 
 		<p>In addition to these points, it is also necessary to remark that RDFS (RDF Schema) and OWL (Ontology Web Language) were defined as frameworks to provide constructors or primitives to design formal ontologies (with some underlying logics) that can be serialized in RDF. However, shapes or schemes for managing RDF as a data model (not as a set of logical statements) are still under development (see row “Validation” in Table 1).</p>
-
-	  
+    </section>
+	
+	
+	<section>  
+	<h2>Rationale</h2>
+		<p>Recent times have seen the development of the Open Services for Lifecycle Collaboration (OSLC) initiative to tackle some of the existing needs regarding interoperability and integration in the Systems Engineering (SE) discipline. This emerging effort is seeking new methods to easily integrate SE tools and build an ideal development and operations environment. At present time, OSCL is comprised of several specifications to model shared resources between applications with the aim of sharing more data, boosting the use of web-based standards (RDF and HTTP) and delivering robust products through the collaboration of development and operational tools. OSLC Core is now an OASIS standard, for products and services that support all phases of the software and product lifecycle. Its main objective lies in the integration between work-products that support Application Life-cycle Management (ALM) and Product Life-cycle Management (PLM). </p>
+		<p>In the context of knowledge management, the Assets Management and Tracked Resource Set specifications are the more convenient for these purposes. However, there is no RDF vocabulary to represent information such as a simulation model, a set of executable business rules (in this case the W3C Rule Interchange Format recommendation could be used), a model (there is an on-going effort powered by the OMG to create an OSLC-MBSE specification (Model-Based Systems Engineering) or a physical circuit. On the other hand, some common and useful services such as indexing, naming, retrieval, quality assessment, visualization or traceability must be provided by all tool vendors creating a tangled environment of query languages, interfaces, formats and protocols. </p>
+		<p>OSLC represents a big step towards the integration and interoperability between the agents involved in the lifecycle development. However, RDF has been also demonstrated [20] to contain some restrictions to represent certain knowledge characteristics such as n-ary relationships [21] and practical issues when dealing with reification [22] and blank nodes [23] preventing the proper use of a linked data environment. On the other hand, some common services such as indexing, retrieval or quality assessment of any kind information are restricted to the internal storage and the query capabilities offered by each particular tool (usually a SPARQL interface). Finally, there is also the need of aligning the OSLC effort to existing standards such as STEP (ISO 10303-“Standard for the Exchange of Product model data”). Although some initial insights can be found, this is an open question that a common knowledge management specification can address enabling the interoperability between different standards. </p>
+		
+		
+		<h2>Knowledge Management processes</h2>
+		<p>As it has been previously outlined and in order to combine RDF and RSHP it is necessary to provide a shape, an OSLC Resource Shape, that defines the entities and relationships in the RHSP representation model to make this specification publicly available and enable the possibility of expressing any piece of knowledge using RSHP. On the other hand and due to the fact that a huge amount of data, services and endpoints based on RDF and the Linked Data principles are already publicly available, a mapping between any RDF vocabulary and RSHP is completely necessary to support backward compatibility and being able to import any piece of RDF data into RSHP.</p>
+		<table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Process</th>
+                    <th>Support</th>
+                </tr>
+            </thead>
+			<tbody>
+				<tr>	
+					<td>Capture</td>
+					<td>Access to OSLC repositories in the context of Systems Engineering for all existing specifications and other RDF-based services or SPARQL endpoints</td>
+				</tr>
+				<tr>	
+					<td>Structure/Store</td>
+					<td>RDF as public exchange data model and syntax and a universal internal representation model to build the System Knowledge Repository (SKR)</td>
+				</tr>
+				<tr>	
+					<td>Access/Search/Disseminate</td>
+					<td>RDF query language (e.g. SPARQL), natural language or a native query language (if any). A set of entities and relationships creating an underlying graph</td>
+				</tr>
+				<tr>	
+					<td>Traceability</td>
+					<td>Entity reconciliation based on graph comparison</td>
+				</tr>
+				<tr>	
+					<td>Visualization</td>
+					<td>A generic graph-based visualization framework that can show entities and relationships but also interpret them as type of diagram. E.g. Class diagram</td>
+				</tr>
+				<tr>	
+					<td>Exploit</td>
+					<td>Index, search, traceability or quality based on the internal representation model</td>
+				</tr>
+				<tr>	
+					<td>Share</td>
+					<td>An OSLC interface on top of the SKR that offers both data and services</td>
+				</tr>
+					<tr>	
+					<td>Create</td>
+					<td>Third-party tool that exports artifacts using an OSLC-based interface</td>
+				</tr>
+			</tbody>
+			</table>
+		
+		
+	
+	
 	  <h2>Motivation and Objectives</h2>
 		<p>
 		That is why a combination of the aforementioned approaches can create the proper environment for knowledge management using RSHP as a common data model to provide advanced services on knowledge management due to its further development and better fit to work-products produced in industry and RDF as input/output interface for exchanging data due to its well-known dissemination. To do so, two main operations should be designed and implemented: 
@@ -173,6 +229,16 @@
 		<li><strong>Transform the RSHP metamodel into an RDF-based vocabulary</strong> or more specifically, into an OSLC Resource Shape. For instance, OSLC has been designed to exchange data between two agents in the same specification but cooperation of agents to support collaborative engineering among different specifications is still open. Furthermore, the type of information that can be exchanged through OSLC is restricted to a set of specifications to represent and serialize knowledge as RDF. Thus, if there is no RDF vocabulary or OSLC Resource Shape to model a type of information, RHSP can be used instead.</li>
 		<li><strong>Create a set of mappings to represent any piece of RDF in RSHP</strong> (external to internal representation). Thus, it is possible to import any kind of existing RDF data source into RSHP (backward compatibility).</li>
 		</ol>
+		
+		<h2>Target Functional Architecture</h2>
+		
+		 <p style="text-align:center">
+		  <img src="imgs/FunctionalArchitecture.png" width="90%">  <br/>
+		   Figure 3: Functional Architecture and core services for knowledge management based on the OSLC KM specification.</p>
+		  </p>
+	  
+	  
+		
 	  <h2>Terminology</h2>
       <p>
        The RSHP representation model has been presented in Figure 2. In order to simplify the external view of this model and ease the creation of an OSLC Resource Shape, two main changes, (see Figure 3), have been made in the representation model:
@@ -185,7 +251,7 @@
 	  
 	 <p style="text-align:center">
 	  <img src="imgs/KM.png" /> <br/>
-	   Figure 2: The KM representation model using UML as simplification of the RSHP representation model.</p>
+	   Figure 4: The KM representation model using UML as simplification of the RSHP representation model.</p>
 	  </p>
 	  
 	  <p>It is important to highlight the strategy followed to model the resource shapes of the elements presented in Figure 5. Taking into account that the Linked Data Initiative has seen last times the creation of methodologies, guidelines or recipes to publish RDF-encoded data, we have paid special attention to follow a similar approach reusing existing RDF-based vocabularies. More specifically, the following rules have been applied to create the OSLC resource shapes:</p>
@@ -1185,7 +1251,7 @@
 	</p>
   </section>
 
-  	 <section class='appendix'>
+  	 <section>
       <h2>Open Issues</h2>
       <p>    As it has been outlined in previous sections, the main objective of this specification is to provide a way for representing any piece of knowledge using the RSHP model. Since there are a lot of techniques for knowledge representation, it is important to emphasize that the use of RSHP model is motivated because:</p>
 		<ol>
