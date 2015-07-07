@@ -121,8 +121,8 @@
 		<li>Other issues regarding provenance of information, graphical representation of every knowledge item or common services that can be implemented on top of these knowledge items, are other key points to address in a knowledge-based environment to develop a real and holistic knowledge-based strategy.</li>
 	  </ul>
 	  <p style="text-align:center">
-	  <img src="imgs/KM-processes.png" /> <br/>
-	   Figure 1: Common processes in Knowledge Management, adapted from [8].</p>
+	  <img src="imgs/KM-processes.png" width="40%"/> <br/>
+	   Figure 1: Common processes in Knowledge Management, adapted from [8].
 	  </p>
 	  
 	  <p>In this sense, one of the cornerstones to provide the proper knowledge management services lies on the selection of an adequate knowledge representation paradigm. After a long time [9], this problem still persists since the choice of a suitable representation format (and syntax) can be reached in several ways. Obviously, different types of knowledge require different types of representation [10] [11] including a type of inference process and a target type of dynamic system. In this light, expressions, rule-based systems, regular grammars, semantic networks, object-oriented representations, frames, intelligent agents or case-based models to name a few are some of the main approaches to information and knowledge modeling.</p>
@@ -146,8 +146,8 @@
 		</li>
 		
 		 <p style="text-align:center">
-	  <img src="imgs/RSHP.png" /> <br/>
-	   Figure 2: The RSHP representation model using UML.</p>
+	  <img src="imgs/RSHP.png" width="50%"/> <br/>
+	   Figure 2: The RSHP representation model using UML.
 	  </p>
 	  
 		</ul>
@@ -234,14 +234,14 @@
 		
 		 <p style="text-align:center">
 		  <img src="imgs/FunctionalArchitecture.png" width="90%">  <br/>
-		   Figure 3: Functional Architecture and core services for knowledge management based on the OSLC KM specification.</p>
+		   Figure 3: Functional Architecture and core services for knowledge management based on the OSLC KM specification.
 		  </p>
 	  
 	  
 		
 	  <h2>Terminology</h2>
       <p>
-       The RSHP representation model has been presented in Figure 2. In order to simplify the external view of this model and ease the creation of an OSLC Resource Shape, two main changes, (see Figure 3), have been made in the representation model:
+       The RSHP representation model has been presented in Figure 2. In order to simplify the external view of this model and ease the creation of an OSLC Resource Shape, two main changes, (see Figure 4), have been made in the representation model:
       </p>
 
 	  <ol>
@@ -250,7 +250,7 @@
 	  </ol>
 	  
 	 <p style="text-align:center">
-	  <img src="imgs/KM.png" /> <br/>
+	  <img src="imgs/KM.png" width="50%"/> <br/>
 	   Figure 4: The KM representation model using UML as simplification of the RSHP representation model.</p>
 	  </p>
 	  
@@ -1204,17 +1204,17 @@
 	<section>
 	<h2>KM Service Provider Capabilities </h2>
 	<h3>Service Provider Resources </h3>
-	<p>Service providers <strong>MUST</strong> provide one or more <code>oslc:ServiceProvider</code> resources as defined by <a href="/bin/view/Main/OslcCoreSpecification#Service_Provider_Resources">Core Specification Version 2.0 - Service Provider Resource</a>. Discovery of OSLC Service Provider Resources <strong>MAY</strong> be via one or more OSLC Service Provider Catalog Resources, or may be discovered by some other and/or additional Provider-specific means outwith the scope of this specification. The <code>oslc:Service</code> resources referenced by this <code>oslc:ServiceProvider</code> <strong>MUST</strong> have an <code>oslc:domain</code> of <code>http://open-services.net/ns/rm#</code>.</p>
+	<p>Service providers <strong>MUST</strong> provide one or more <code>oslc:ServiceProvider</code> resources as defined by <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Service_Provider_Resources">Core Specification Version 2.0 - Service Provider Resource</a>. Discovery of OSLC Service Provider Resources <strong>MAY</strong> be via one or more OSLC Service Provider Catalog Resources, or may be discovered by some other and/or additional Provider-specific means outwith the scope of this specification. The <code>oslc:Service</code> resources referenced by this <code>oslc:ServiceProvider</code> <strong>MUST</strong> have an <code>oslc:domain</code> of <code>http://open-services.net/ns/rm#</code>.</p>
 	
-	<p>Service providers <strong>MAY</strong> provide one more more <code>oslc:ServiceProviderCatalog</code> resources as defined by <a href="/bin/view/Main/OslcCoreSpecification#Service_Provider_Catalog_Resources">Core Specification Version 2.0 - Service Provider Resources</a>. Any such catalog resources <strong>MUST</strong> include at least one <code>oslc:domain</code> of <code>http://open-services.net/ns/rm#</code>. Discovery of top-level OSLC Service Provider Catalog Resources is outwith the scope of this specification.
+	<p>Service providers <strong>MAY</strong> provide one more more <code>oslc:ServiceProviderCatalog</code> resources as defined by <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Service_Provider_Catalog_Resources">Core Specification Version 2.0 - Service Provider Resources</a>. Any such catalog resources <strong>MUST</strong> include at least one <code>oslc:domain</code> of <code>http://open-services.net/ns/rm#</code>. Discovery of top-level OSLC Service Provider Catalog Resources is outwith the scope of this specification.
 	</p>
 	<p>Service providers <strong>MUST</strong> give an <code>oslc:serviceProvider</code> property on all OSLC Defined Resources. This property <strong>MUST</strong> refer to an appropriate <code>oslc:ServiceProvider</code> resource.
 	</p>
 	<h3>Creation Factories </h3>	
-	<p>Service providers supporting resource creation <strong>MUST</strong> do so through <code>oslc:CreationFactory</code> resources, as defined by <a href="/bin/view/Main/OslcCoreSpecification#Creation_Factories">Core Specification Version 2.0 - Creation Factories</a>. Any such factory resources <strong>MUST</strong> be discoverable through <code>oslc:Service</code> resources. Providers <strong>SHOULD</strong> provide <code>oslc:ResourceShape</code> resources on <code>oslc:CreationFactory</code> resources as defined by <a href="/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource">OSLC Core Specification Appendix A: Common Properties - Resource Shapes</a>.
+	<p>Service providers supporting resource creation <strong>MUST</strong> do so through <code>oslc:CreationFactory</code> resources, as defined by <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Creation_Factories">Core Specification Version 2.0 - Creation Factories</a>. Any such factory resources <strong>MUST</strong> be discoverable through <code>oslc:Service</code> resources. Providers <strong>SHOULD</strong> provide <code>oslc:ResourceShape</code> resources on <code>oslc:CreationFactory</code> resources as defined by <a href="http://openservices.net/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource">OSLC Core Specification Appendix A: Common Properties - Resource Shapes</a>.
 	</p>
 	<h3>Query Capabilities </h3>
-	<p>Service providers <strong>MUST</strong> support query capabilities, as defined by <a href="/bin/view/Main/OslcCoreSpecification#Query_Capabilities">Core Specification Version 2.0 - Query Capabilities</a>. Providers <strong>SHOULD</strong> provide <code>oslc:ResourceShape</code> on <code>oslc:QueryCapability</code> resources as defined by <a href="/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource">OSLC Core Specification Appendix A: Common Properties - Resource Shapes</a>.
+	<p>Service providers <strong>MUST</strong> support query capabilities, as defined by <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Query_Capabilities">Core Specification Version 2.0 - Query Capabilities</a>. Providers <strong>SHOULD</strong> provide <code>oslc:ResourceShape</code> on <code>oslc:QueryCapability</code> resources as defined by <a href="http://openservices.net/bin/view/Main/OSLCCoreSpecAppendixA#oslc_ResourceShape_Resource">OSLC Core Specification Appendix A: Common Properties - Resource Shapes</a>.
 	</p>
 	<p>The Query Capability <strong>MUST</strong> support these parameters: </p>
 	<ul>
@@ -1225,18 +1225,18 @@
 		</ul> 
 	<p>Where <code>oslc:ResourceShape</code> is not supported by the Query Capability, providers <strong>SHOULD</strong> use the following guidance to represent query results:</p>
 	<ul>
-		<li> For RDF/XML and XML, use <code>rdf:Description</code> and <code>rdfs:member</code> as defined by <a href="/bin/view/Main/OSLCCoreSpecAppendixRepresentations#RDF_XML_Examples">Core Specification Appendix B:Representations and Examples - RDF/XML Examples</a>.</li> 
-		<li> For JSON the query results are contained within <code>oslc:resutls</code> array. See <a href="/bin/view/Main/OSLCCoreSpecAppendixRepresentations#Guidelines_for_JSON">Core Specification Appendix B: Representations and Examples - Guidelines for JSON</a>.</li>
+		<li> For RDF/XML and XML, use <code>rdf:Description</code> and <code>rdfs:member</code> as defined by <a href="http://openservices.net/bin/view/Main/OSLCCoreSpecAppendixRepresentations#RDF_XML_Examples">Core Specification Appendix B:Representations and Examples - RDF/XML Examples</a>.</li> 
+		<li> For JSON the query results are contained within <code>oslc:results</code> array. See <a href="http://openservices.net/bin/view/Main/OSLCCoreSpecAppendixRepresentations#Guidelines_for_JSON">Core Specification Appendix B: Representations and Examples - Guidelines for JSON</a>.</li>
 	</ul> 
-	<p>The stability of query results is OPTIONAL (see <a href="/bin/view/Main/OslcCoreSpecification" class="twikiLink">Core Specification Version 2.0 - Stable Paging</a>).</p>
+	<p>The stability of query results is OPTIONAL (see <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification" class="twikiLink">Core Specification Version 2.0 - Stable Paging</a>).</p>
 
 	<h3>Delegated UIs </h3>
-	<p>OSLC KM service providers <strong>MUST</strong> support the selection and creation of resources by delegated web-based user interface dialogs <a href="/bin/view/Main/OslcCoreSpecification#Delegated_User_Interface_Dialogs">Delegated UIs</a> as defined by OSLC Core.</p>
-    <p>OSLC KM service providers <strong>MAY</strong> support the pre-filling of creation dialogs based on the definition at <a href="/bin/view/Main/OslcCoreSpecification#Delegated_User_Interface_Dialogs">Delegated UIs</a>.
+	<p>OSLC KM service providers <strong>MUST</strong> support the selection and creation of resources by delegated web-based user interface dialogs <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Delegated_User_Interface_Dialogs">Delegated UIs</a> as defined by OSLC Core.</p>
+    <p>OSLC KM service providers <strong>MAY</strong> support the pre-filling of creation dialogs based on the definition at <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Delegated_User_Interface_Dialogs">Delegated UIs</a>.
 	</p>
 	
 	<h3>Usage Identifiers </h3>
-	<p>OSLC KM service provider <strong>MAY</strong> identify the usage of various services with additional property values for the <a href="/bin/view/Main/OslcCoreSpecification#Service_Provider_Resources">OSLC Core</a> defined <code>oslc:usage</code> property on <code>oslc:Dialog</code>, <code>CreationFactory</code> and <code>QueryCapability</code>. The <code>oslc:usage</code> property value of <code>http://open-services.net/ns/core#default</code> <strong>SHOULD</strong> be used to designate the default or primary service to be used by consumers when multiple entries are found.
+	<p>OSLC KM service provider <strong>MAY</strong> identify the usage of various services with additional property values for the <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Service_Provider_Resources">OSLC Core</a> defined <code>oslc:usage</code> property on <code>oslc:Dialog</code>, <code>CreationFactory</code> and <code>QueryCapability</code>. The <code>oslc:usage</code> property value of <code>http://open-services.net/ns/core#default</code> <strong>SHOULD</strong> be used to designate the default or primary service to be used by consumers when multiple entries are found.
 	</p>
 	<p>There are no additional usage identifiers defined by this specification. OSLC Providers <strong>MAY</strong> provide their own usage URIs. Such usage URIs <strong>MUST</strong> be in a non-OSLC namespace.
   </p>
@@ -1330,7 +1330,7 @@
 	   <section class='appendix'>
       <h2>OSLC Specifications-References</h2>
       <ul>
-		<li> OSLC Core - <a href="/bin/view/Main/OslcCoreSpecification">OSLC Core Specification 2.0</a></li>	
+		<li> OSLC Core - <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification">OSLC Core Specification 2.0</a></li>	
 		<li> Dublin Core 1.1 - <a href="http://dublincore.org/documents/2010/10/11/dces/" target="_top">Dublin Core Metadata Element Set, Version 1.1</a></li> 
 		<li> FOAF - <a href="http://xmlns.com/foaf/spec/20100809.html" target="_top">Friend of a Friend (FOAF) v0.98</a></li> <li> HTTP 1.1 - <a href="http://tools.ietf.org/html/rfc2616" target="_top">Hyper-text Transfer Protocol (HTTP/1.1)</a></li> 
 		<li> OAuth 1.0a - <a href="http://tools.ietf.org/html/rfc5849" target="_top">RFC5849 - The OAuth 1.0 Protocol</a></li> 
@@ -1344,7 +1344,7 @@
 		<li> HTML presentation of the RDFS Schema of the OSLC KM V1.0 Specification Vocabulary - <a href="FIXME"KMSpecificationVocabularyV2</a>.</li>
 		</ul> 
     </section>
-		<style>
+	<style>
 		body {
 			
 			  padding: 2em 1em 2em 70px;
