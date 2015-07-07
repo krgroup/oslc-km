@@ -84,7 +84,7 @@
       <p>
         This family of documents defines the Open Services for Lifecycle Collaboration Knowledge Management and Definition specification, also known as OSLC KM. These documents collectively define the OSLC KM 1.0 specification. This specification supports key REST APIs for Knowledge Management systems. OSLC KM 1.0 takes an open, loosely coupled approach to specific lifecycle integration scenarios. The scenarios and this V1.0 specification were created by the Knowledge Reuse Group (UC3M) and The Reuse Company (TRC). 
       </p>
-	  <p>This specification builds on the Open Services for Lifecycle Collaboration (OSLC) Core v2.0 Specification to define the resources, properties and operations supported by an OSLC Requirements Definition and Management (OSLC-RM) provider.
+	  <p>This specification builds on the Open Services for Lifecycle Collaboration (OSLC) Core v2.0 Specification to define the resources, properties and operations supported by an OSLC Knowledge Definition and Management (OSLC-KM) provider.
 	  </p>
 	  
 	  <p>
@@ -305,7 +305,7 @@
 
 	  <h3>Specification Versioning</h3>
 	  <p>See <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification#Specification_Versioning">Core Specification Version 2.0 - Specification Versioning</a>.</p>
-	  <p>Service providers that support the resource formats and services in this specification <strong>MUST</strong> add an HTTP response header of <code>OSLC-Core-Version</code> with a value of <code>2.0</code>. Consumers <strong>SHOULD</strong> request formats and services defined in this document by providing a HTTP request header of <code>OSLC-Core-Version</code> with a value of <code>2.0</code>. See section below on Version Compatibility with OSLC RM 1.0 Specifications.</p>
+	  <p>Service providers that support the resource formats and services in this specification <strong>MUST</strong> add an HTTP response header of <code>OSLC-Core-Version</code> with a value of <code>2.0</code>. Consumers <strong>SHOULD</strong> request formats and services defined in this document by providing a HTTP request header of <code>OSLC-Core-Version</code> with a value of <code>2.0</code>. See section below on Version Compatibility with OSLC KM 1.0 Specifications.</p>
 	 <p>This specification reserves, for possible future use, the use of the HTTP header <code>OSLC-KM-Version</code>. OSLC Providers <strong>MUST NOT</strong> use this HTTP header.
 	 </p>
 	  <h3>Namespaces</h3>
@@ -314,7 +314,7 @@
 	  <h3>Resource Formats</h3>
 	  <p>In addition to the requirements for <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification#OslcDefinedResourceRepresentations">Core Specification Version 2.0 - OSLC Defined Resource Representations</a>, this section outlines further refinements and restrictions.
 	  </p>
-	  <p>For HTTP GET/PUT/POST requests on all OSLC RM and OSLC Core defined resource types,</p>
+	  <p>For HTTP GET/PUT/POST requests on all OSLC KM and OSLC Core defined resource types,</p>
 		<ul>
 			<li>KM Providers <strong>MUST</strong> support RDF/XML representations with media-type <code>application/rdf+xml</code>. KM Consumers <strong>MUST</strong> be prepared to deal with any valid RDF/XML document.
 			</li> 
@@ -345,12 +345,12 @@
 	  
 	  <h3>Error Responses</h3>
 	  
-	  <p>See <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification#Error_Responses">Core Specification Version 2.0 - Error Responses</a>. OSLC RM places no additional constraints on error responses.</p>
+	  <p>See <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification#Error_Responses">Core Specification Version 2.0 - Error Responses</a>. OSLC KM places no additional constraints on error responses.</p>
 
 
 	  <h3>Pagination</h3>
 	  
-	  <p>OSLC KM service providers <strong>SHOULD</strong> support pagination of query results as defined by the OSLC Core Specification. OSLC RM service providers <strong>MAY</strong> support pagination of a single resource's properties as defined by the OSLC Core Specification.</p>
+	  <p>OSLC KM service providers <strong>SHOULD</strong> support pagination of query results as defined by the OSLC Core Specification. OSLC KM service providers <strong>MAY</strong> support pagination of a single resource's properties as defined by the OSLC Core Specification.</p>
 
 
 	  <h3>Requesting and Updating Properties</h3>
@@ -381,6 +381,66 @@
 		</li>
 	</ul> 
 	<h2>KM Resources</h2>
+	
+	<table class="table table-striped table-bordered table-condensed">
+	
+		<thead>
+		<tr><th>Class</th>
+		<th>Resource Shape Name</th>
+		<th>Description</th>
+		</tr>
+		</thead>
+		<tbody>
+		
+		<tr>
+			<td>Artifact</td>	
+			<td>Ios_km:Artifact</td>
+			<td>A container of: relationships between concepts, metaproperties, etc. to semantically describe any piece of information. It is the basis for the creation of an underlying semantic network (not based on logic formalisms).</td>
+		</tr>
+
+
+		<tr>
+			<td>Metaproperty</td>	
+			<td>Ios_km:MetaProperty </td>
+			<td>A wrapper of a metaproperty containing a tag and value. Both can be any type of resource or, more specifically, concepts.
+			</td>
+		</tr>
+	
+
+		<tr>
+			<td>RSHP</td>	
+			<td>Ios_km:RSHP</td>
+			<td>An RSHP is a wrapper to create a relationship between any set of resources. It is possible to add a semantics and can contain any number of elements representing binary, ternary, etc. relationships.</td>
+		</tr>
+		
+			
+
+
+
+		<tr>
+			<td>Term</td>	
+			<td>Ios_km:Concept </td>
+			<td>This concept follows the semantics and shape of an <code>skos:Concept</code>. More specifically: "the notion of a SKOS concept is useful when describing the conceptual or intellectual structure of a knowledge organization system, and when referring to specific ideas or meanings established within a KOS (Knowledge Organization System").
+		</td>
+		</tr>
+		
+		<tr>
+			<td>SemanticCluster</td>	
+			<td>Ios_km:Concept </td>
+			<td>See previous definition</td>
+		</tr>
+		
+		
+		<tr>
+			<td>TermTag</td>	
+			<td>Ios_km:Concept </td>
+			<td>See previous definition</td>
+		</tr>
+		
+		</tbody>
+	</table>
+	
+	
 	<h3>Artifact Resource</h3>
 	
 	<table class="table table-striped table-bordered table-condensed">
@@ -627,7 +687,110 @@
 		</tbody>
 		</table>
 	
-	<h3>Concept Resource</h3>
+		<h3>Metaproperty Resource</h3>
+	
+	<table class="table table-striped table-bordered table-condensed">
+		<thead>
+		<tr><th class="Prefixed-Name">Prefixed Name</th>
+		<th>Occurs</th>
+		<th>Read-only</th>
+		<th>Value-type</th>
+		<th>Representation</th>
+		<th>Range</th>
+		<th>Description</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr class="row-odd">
+			<td><a href="http://purl.org/dc/terms/identifier" title="Dcterms:identifier"><code>dcterms:identifier</code></a></td>
+			<td>Exactly-one</td>
+			<td>True</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" title="Rdfs:Literal"><code>rdfs:Literal</code></a></td>
+			<td>The unique identifier for this metaproperty</td>
+		</tr>
+		<tr class="row-even">
+			<td ><a href="#" title="Ios km:tag"><code>Ios km:tag</code></a></td>
+			<td>Exactly-one</td>
+			<td>False</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
+			<td>A tag for this metaproperty represented through a concept or even any resource.</td>
+		</tr>
+		<tr class="row-odd">
+			<td ><a href="#" title="Ios km:value"><code>Ios km:value</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
+			<td>A value for this metaproperty represented through a concept or even any resource.</td>
+		</tr>
+		</tbody>
+		</table>
+		
+	
+	<h3>RSHP Resource</h3>
+		
+	<table class="table table-striped table-bordered table-condensed">
+	<thead>
+	
+	<tr><th>Prefixed Name</th>
+	<th>Occurs</th>
+	<th>Read-only</th>
+	<th>Value-type</th>
+	<th>Representation</th>
+	<th>Range</th>
+	<th>Description</th>
+	</thead>
+	<tbody>
+		<tr>
+			<td><a href="http://purl.org/dc/terms/identifier" title="Dcterms:identifier"><code>dcterms:identifier</a></td>
+			<td>Exactly-one</td>
+			<td>True</td>
+			<td>String</td>
+			<td>Inline</td>
+			<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" title="Rdfs:Literal"><code>rdfs:Literal</code></a></td>
+			<td>The unique identifier for this RSHP. It is now an string but it would be better a skos:Concept to avoid broken links between pieces of data.</td>
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios km:semantics"><code>Ios_km:semantics</code></a></td>
+			<td>Zero-or-one</td>
+			<td>True</td>
+			<td>Either Resource or Local Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" title="Rdf:Property"><code>rdf:Property</code></a></td>
+			<td>The concept (property) that represents the semantics of this relationship.</td>
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios km:from"><code>Ios_km:from</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List title="Rdf:List"><code>rdf:List</code></a></td>
+			<td>The list of concepts from which a relationship is created. It is similar to skos:member but a new name used to provide a more meaningful name.
+		Status: the name of this property is still open.</td>
+		</tr>
+		<tr>
+			<td><a href="#" title="Ios km:to"><code>Ios_km:to</code></a></td>
+			<td>Zero-or-one</td>
+			<td>False</td>
+			<td>Resource</td>
+			<td>Either Reference or Inline</td>
+			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List title="Rdf:List"><code>rdf:List</code></a></td>
+			<td>The list of concepts to which a relationship is created. It is similar to skos:member but a new name used to provide a more meaningful name.
+		Status: the name of this property is still open.</td>
+		</tr>
+		</tbody>
+		</table>
+		
+
+
+
+		<h3>Concept Resource</h3>
 	
 	<table class="table table-striped table-bordered table-condensed">
 		<thead>
@@ -967,106 +1130,7 @@
 		</tbody>
 	</table>
 
-	<h3>RSHP Resource</h3>
-		
-	<table class="table table-striped table-bordered table-condensed">
-	<thead>
 	
-	<tr><th>Prefixed Name</th>
-	<th>Occurs</th>
-	<th>Read-only</th>
-	<th>Value-type</th>
-	<th>Representation</th>
-	<th>Range</th>
-	<th>Description</th>
-	</thead>
-	<tbody>
-		<tr>
-			<td><a href="http://purl.org/dc/terms/identifier" title="Dcterms:identifier"><code>dcterms:identifier</a></td>
-			<td>Exactly-one</td>
-			<td>True</td>
-			<td>String</td>
-			<td>Inline</td>
-			<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" title="Rdfs:Literal"><code>rdfs:Literal</code></a></td>
-			<td>The unique identifier for this RSHP. It is now an string but it would be better a skos:Concept to avoid broken links between pieces of data.</td>
-		</tr>
-		<tr>
-			<td><a href="#" title="Ios km:semantics"><code>Ios_km:semantics</code></a></td>
-			<td>Zero-or-one</td>
-			<td>True</td>
-			<td>Either Resource or Local Resource</td>
-			<td>Either Reference or Inline</td>
-			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#Property" title="Rdf:Property"><code>rdf:Property</code></a></td>
-			<td>The concept (property) that represents the semantics of this relationship.</td>
-		</tr>
-		<tr>
-			<td><a href="#" title="Ios km:from"><code>Ios_km:from</code></a></td>
-			<td>Zero-or-one</td>
-			<td>False</td>
-			<td>Resource</td>
-			<td>Either Reference or Inline</td>
-			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List title="Rdf:List"><code>rdf:List</code></a></td>
-			<td>The list of concepts from which a relationship is created. It is similar to skos:member but a new name used to provide a more meaningful name.
-		Status: the name of this property is still open.</td>
-		</tr>
-		<tr>
-			<td><a href="#" title="Ios km:to"><code>Ios_km:to</code></a></td>
-			<td>Zero-or-one</td>
-			<td>False</td>
-			<td>Resource</td>
-			<td>Either Reference or Inline</td>
-			<td><a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List title="Rdf:List"><code>rdf:List</code></a></td>
-			<td>The list of concepts to which a relationship is created. It is similar to skos:member but a new name used to provide a more meaningful name.
-		Status: the name of this property is still open.</td>
-		</tr>
-		</tbody>
-		</table>
-		
-	<h3>Metaproperty Resource</h3>
-	
-	<table class="table table-striped table-bordered table-condensed">
-		<thead>
-		<tr><th class="Prefixed-Name">Prefixed Name</th>
-		<th>Occurs</th>
-		<th>Read-only</th>
-		<th>Value-type</th>
-		<th>Representation</th>
-		<th>Range</th>
-		<th>Description</th>
-		</tr>
-		</thead>
-		<tbody>
-		<tr class="row-odd">
-			<td><a href="http://purl.org/dc/terms/identifier" title="Dcterms:identifier"><code>dcterms:identifier</code></a></td>
-			<td>Exactly-one</td>
-			<td>True</td>
-			<td>String</td>
-			<td>Inline</td>
-			<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" title="Rdfs:Literal"><code>rdfs:Literal</code></a></td>
-			<td>The unique identifier for this metaproperty</td>
-		</tr>
-		<tr class="row-even">
-			<td ><a href="#" title="Ios km:tag"><code>Ios km:tag</code></a></td>
-			<td>Exactly-one</td>
-			<td>False</td>
-			<td>Either Resource or Local Resource</td>
-			<td>Either Reference or Inline</td>
-			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
-			<td>A tag for this metaproperty represented through a concept or even any resource.</td>
-		</tr>
-		<tr class="row-odd">
-			<td ><a href="#" title="Ios km:value"><code>Ios km:value</code></a></td>
-			<td>Zero-or-one</td>
-			<td>False</td>
-			<td>Either Resource or Local Resource</td>
-			<td>Either Reference or Inline</td>
-			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
-			<td>A value for this metaproperty represented through a concept or even any resource.</td>
-		</tr>
-		</tbody>
-		</table>
-
-
 	<h3>Relationship labels </h3>
 	<p>When an KM relationship property is to be presented in a user interface, it may be helpful to provide an informative and  useful textual label for that relationship instance. (This in addition to the relationship property URI and the object resource URI, which are also candidates for presentation to a user.) To this end, OSLC providers <strong>MAY</strong> suppport a dcterms:title link property in RM resource representations where a relationship property is permitted, using the anchor approach outlined in the OSLC Core Links Guidance.</p>
 	<p>Providers and consumers should be aware that the dcterms:title of a link is unrelated to the dcterms:title of the object resource. Indeed, links may carry other properties with names in common to the object of the link, but there is no specified relationship between these property values.</p>
@@ -1112,15 +1176,46 @@
   </p>
 
 	<h3>Media Types </h3>
-	<p>To identify a format of RDF/XML, the media type used for RM resource representations <strong>MUST</strong> be <code>application/rdf+xml</code>. The usage of the OSLC RM 1.0 defined media types of <code>application/x-oslc-rm-requirement-1.0+xml</code>, <code>application/x-oslc-rm-requirement-collection-1.0+xml</code>, <code>application/x-oslc-rm-service-description-1.0+xml</code> and <code>application/x-oslc-disc-service-provider-catalog+xml</code> is deprecated.
+	<p>To identify a format of RDF/XML, the media type used for KM resource representations <strong>MUST</strong> be <code>application/rdf+xml</code>. The usage of the OSLC KM 1.0 defined media types of <code>application/x-oslc-km-artifact-1.0+xml</code>, <code>application/x-oslc-km-artifact-collection-1.0+xml</code>, <code>application/x-oslc-km-service-description-1.0+xml</code> and <code>application/x-oslc-disc-service-provider-catalog+xml</code> is deprecated.
 	</p>
 	<h3>Requesting formats </h3>
-	<p>RM 1.0 consumers wanting to request 1.0 resource formats will not need to change if they used 1.0 defined media types ( <code>application/x-oslc-rm*</code>), see OSLC-RM 1.0. RM 2.0 consumers should use media types as defined in this specification for requests, excluding the OSLC RM 1.0 specific media types ( <code>application/x-oslc-rm*</code>). RM consumers supporting both 1.0 and 2.0, should request request both 1.0 and 2.0 media types on HTTP GET requests as usually done with HTTP request parameter <code>Accept</code> giving appropriate quality (See HTTP Accept) weighting to help distinguish their preferred content.
+	<p>KM 1.0 consumers wanting to request 1.0 resource formats will not need to change if they used 1.0 defined media types ( <code>application/x-oslc-km*</code>). KM 1.0 consumers should use media types as defined in this specification for requests, excluding the OSLC KM 1.0 specific media types ( <code>application/x-oslc-km*</code>). KM consumers supporting should request request 1.0 media types on HTTP GET requests as usually done with HTTP request parameter <code>Accept</code> giving appropriate quality (See HTTP Accept) weighting to help distinguish their preferred content.
 	</p>
 	<p>For additional guidance, a KM 1.0 consumer or provider <strong>MAY</strong> reference the <code>OSLC-Core-Version		</code> HTTP header with a value of <code>1.0</code>.
 	</p>
   </section>
 
+  	 <section class='appendix'>
+      <h2>Open Issues</h2>
+      <p>    As it has been outlined in previous sections, the main objective of this specification is to provide a way for representing any piece of knowledge using the RSHP model. Since there are a lot of techniques for knowledge representation, it is important to emphasize that the use of RSHP model is motivated because:</p>
+		<ol>
+			<li>It has been specially designed for information retrieval purposes and </li>
+			<li>it is fully supported in the knowledgeMANAGER tool. </li>
+		</ol>
+		<p>However and with the aim of keeping backward compatibility, a mapping to existing RDF data has been also presented and implemented. This approach allows us to provide a mechanism for those that want to publish RDF data for which there is no shape or vocabulary (RSHP could be sued) and to enable a way of re-using existing RDF data sources. Nevertheless, the transformation of RDF to RSHP has been designed at a graph level so a higher type of transformation (keeping logic formalisms if any) is under study. For instance, an RDFS (RDF Schema) and OWL (Ontology Web Language), W3C standards for ontology construction, mapping to RSHP are ongoing work.
+		</p>
+		<p>On the other hand, this specification can be also seen as a broader effort, see  Figure 6, containing certain parts of existing specifications such as Asset Management and Tracked Resource Set. In this case, these specifications should be merged reusing the existing concepts and properties. Furthermore and in order to support a full knowledge management strategy, the OSLC KM could be extended to: </p>
+		<ul>
+		<li>Support a kind of formal reasoning or underlying logic formalism.</li>
+		<li>Include more provenance information. E.g. W3C Provenance Ontology.</li>
+		<li>Expose more services such as traceability of quality checking of any artifact.</li>
+		<li>Expose a general-purpose visualization service.</li>
+		</ul>
+    </section>
+	
+  
+   <section class='appendix'>
+      <h2>Implementation</h2>
+      <p>
+       The current specification is implemented in the following tools:
+      </p>
+	  <ul>
+		<li><a href="http://www.reusecompany.com/knowledgemanager">knowledgeMANAGER</a> by <a href="http://www.reusecompany.com">The Reuse Company</a>.
+		</li>
+	  </ul>
+    </section>
+	
+	
 	 <section class='appendix'>
       <h2>Examples</h2>
       <p>
