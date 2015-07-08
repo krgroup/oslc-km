@@ -50,7 +50,7 @@
               ,   company:    "Carlos III University of Madrid, Spain"
               ,   companyURL: "http://www.uc3m.es/"
               },
-			     {
+			 {
                   name:       "Juan Llorens"
               ,   url:        "https://www.linkedin.com/in/llorensjuan"
               ,   mailto:     "llorens@kr.inf.uc3m.es"
@@ -189,7 +189,7 @@
 		</ul>
 
 	<h3>Discussion and Evaluation</h3>
-	<p>As a summary of both approaches, Table 1 shows the main characteristics and capabilities that can be found in RDF and RSHP with special focus on those regarding knowledge management and, more specifically knowledge representation. Nevertheless, the main difference lies on the expressivity, the underlying data model and the operations they support:</p>
+	<p>As a summary of both approaches,the following table shows the main characteristics and capabilities that can be found in RDF and RSHP with special focus on those regarding knowledge management and, more specifically knowledge representation. Nevertheless, the main difference lies on the expressivity, the underlying data model and the operations they support:</p>
 	<ol>
 		<li>RDF is based on a directed graph and can only represent binary relationships (unless reification and blank nodes are used) while RSHP is based on an undirected graph and it can natively represent N-ary relationships.</li>
 		<li>RDF is built on two main concepts: resources and literals. Nevertheless, a literal value cannot be used as the subject of an RDF triple. Although this issue can be overcame using a blank node (or even reification) and the property rdf:value, it also adds extra complexity for agents that are going to generate and process RDF. In RSHP it is possible to create a relationship between a literal value (a knowledge element) as another resource.</li>
@@ -311,7 +311,7 @@
 	  <li>If there is an RDF-based vocabulary but it is just a de-facto standard, it should be used as it is including minor changes creating an OSCL Resource Shape.</li>
 	  <li>If there is not an RDF-based vocabulary, try to take advantage (reusing properties and classes) of existing RDF-based vocabularies to create the OSLC Resource Shape.</li>
 	  </ul>
-	  <p>In the particular case of knowledge management, we have selected the Simple Knowledge Organization System (SKOS), a W3C recommendation, to define concepts, since it has been designed for promoting controlled vocabularies, thesauri, taxonomies or event simple ontologies to the Linked Data initiative. That is why, in this model, most of the entities can be considered as a <code>skos:Concept</code> and we have created the shape of this standard definition of concept in the resource <code>Ios_km:Concept</code>.</p>
+	  <p>In the particular case of knowledge management, we have selected the Simple Knowledge Organization System (SKOS), a W3C recommendation, to define concepts, since it has been designed for promoting controlled vocabularies, thesauri, taxonomies or event simple ontologies to the Linked Data initiative. That is why, in this model, most of the entities can be considered as a <code>skos:Concept</code> and we have created the shape of this standard definition of concept in the resource <code>oslc_km:Concept</code>.</p>
 
     </section>
 	
@@ -426,7 +426,7 @@
 	 <p>This specification reserves, for possible future use, the use of the HTTP header <code>OSLC-KM-Version</code>. OSLC Providers <strong>MUST NOT</strong> use this HTTP header.
 	 </p>
 	  <h3>Namespaces</h3>
-	  <p> In addition to the namespace URIs and namespace prefixes <code>oslc</code>, <code>rdf</code>, <code>dcterms</code> and <code>foaf</code> defined in the <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification">Core Specification Version 2.0</a>, OSLC KM defines the namespace URI of <code>http://ios.crystal-artemis.eu/ns/km/</code> with a preferred namespace prefix of <code>Ios_km</code>.
+	  <p> In addition to the namespace URIs and namespace prefixes <code>oslc</code>, <code>rdf</code>, <code>dcterms</code> and <code>foaf</code> defined in the <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification">Core Specification Version 2.0</a>, OSLC KM defines the namespace URI of <code>http://trc-research.org/spec/km/</code> with a preferred namespace prefix of <code>oslc_km</code>.
 	  <p>Furthermore, the SKOS (Simple Knowledge Organization System), a W3C Recommendation, is also defined through the namespace: <code>http://www.w3.org/2004/02/skos/core</code>  and prefix: <code>skos</code>. Other semantic-based vocabularies will use the <em>de facto</em> namespace and prefix that can be searched using the service: <a href="http://prefix.cc">Prefix.cc</a>.
 	  <h3>Resource Formats</h3>
 	  <p>In addition to the requirements for <a href="http://open-services.net/bin/view/Main/OslcCoreSpecification#OslcDefinedResourceRepresentations">Core Specification Version 2.0 - OSLC Defined Resource Representations</a>, this section outlines further refinements and restrictions.
@@ -511,14 +511,14 @@
 		
 		<tr>
 			<td>Artifact</td>	
-			<td><code>Ios_km:Artifact</code></td>
+			<td><code>oslc_km:Artifact</code></td>
 			<td>A container of: relationships between concepts, metaproperties, etc. to semantically describe any piece of information. It is the basis for the creation of an underlying semantic network (not based on logic formalisms).</td>
 		</tr>
 
 
 		<tr>
 			<td>Metaproperty</td>	
-			<td><code>Ios_km:MetaProperty</code> </td>
+			<td><code>oslc_km:MetaProperty</code> </td>
 			<td>A wrapper of a metaproperty containing a tag and value. Both can be any type of resource or, more specifically, concepts.
 			</td>
 		</tr>
@@ -526,7 +526,7 @@
 
 		<tr>
 			<td>RSHP</td>	
-			<td><code>Ios_km:RSHP</code></td>
+			<td><code>oslc_km:RSHP</code></td>
 			<td>An RSHP is a wrapper to create a relationship between any set of resources. It is possible to add a semantics and can contain any number of elements representing binary, ternary, etc. relationships.</td>
 		</tr>
 		
@@ -536,21 +536,21 @@
 
 		<tr>
 			<td>Term</td>	
-			<td><code>Ios_km:Concept</code> </td>
+			<td><code>oslc_km:Concept</code> </td>
 			<td>This concept follows the semantics and shape of an <code>skos:Concept</code>. More specifically: "the notion of a SKOS concept is useful when describing the conceptual or intellectual structure of a knowledge organization system, and when referring to specific ideas or meanings established within a KOS (Knowledge Organization System").
 		</td>
 		</tr>
 		
 		<tr>
 			<td>SemanticCluster</td>	
-			<td><code>Ios_km:Concept</code> </td>
+			<td><code>oslc_km:Concept</code> </td>
 			<td>See previous definition</td>
 		</tr>
 		
 		
 		<tr>
 			<td>TermTag</td>	
-			<td><code>Ios_km:Concept</code> </td>
+			<td><code>oslc_km:Concept</code> </td>
 			<td>See previous definition</td>
 		</tr>
 		
@@ -632,27 +632,27 @@
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios km:term"><code>Ios_km:term</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/term" title="oslc_km:term"><code>oslc_km:term</code></a></td>
 			<td>Zero-or-one</td>
 			<td>False</td>
 			<td>Either Resource or Local Resource</td>
 			<td>Either Reference or Inline</td>
-			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/Concept" title="oslc_km:Concept"><code>oslc_km:Concept</code></a></td>
 			<td>The lexical form of this artifact (apart from title and description). It is an URI to a concept.</td>
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios_km:artifact type"><code>Ios_km:artifact-type</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/artifact-type" title="oslc_km:artifact type"><code>oslc_km:artifact-type</code></a></td>
 			<td>Zero-or-one</td>
 			<td>True</td>
 			<td>Either Resource or Local Resource</td>
 			<td>Either Reference or Inline</td>
-			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
+			<td><a href="#Concept" title="oslc_km:Concept"><code>oslc_km:Concept</code></a></td>
 			<td>A link to a concept describing the type of this artifact. E.g. "Class Diagram"</td>
 
 		</tr>
 		<tr>
-			<td><a href="#rshps" title="Ios_km:rshps"><code>Ios_km:rshps</code></a></td>
+			<td><a href="#rshps" title="oslc_km:rshps"><code>oslc_km:rshps</code></a></td>
 			<td>Exactly-one</td>
 			<td>False</td>
 			<td>Either Resource or Local Resource</td>
@@ -662,7 +662,7 @@
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios_km:metaproperties"><code>Ios_km:metaproperties</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/metaproperties" title="oslc_km:metaproperties"><code>oslc_km:metaproperties</code></a></td>
 			<td>Zero-or-one</td>
 			<td>False</td>
 			<td>Either Resource or Local Resource</td>
@@ -672,7 +672,7 @@
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios_km:owned_artifacts"><code>Ios_km:owned-artifacts</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/owned-artifacts" title="oslc_km:owned_artifacts"><code>oslc_km:owned-artifacts</code></a></td>
 			<td>Zero-or-one</td>
 			<td>False</td>
 			<td>Either Resource or Local Resource</td>
@@ -682,7 +682,7 @@
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios_km:alt visualization"><code>Ios_km:alt-visualization</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/alt-visualization" title="oslc_km:alt visualization"><code>oslc_km:alt-visualization</code></a></td>
 			<td>Zero-or-many</td>
 			<td>False</td>
 			<td>Resource</td>
@@ -692,7 +692,7 @@
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios_km:preferred visualization"><code>Ios_km:preferred-visualization</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/preferred-visualization" title="oslc_km:preferred visualization"><code>oslc_km:preferred-visualization</code></a></td>
 			<td>Zero-or-one</td>
 			<td>False</td>
 			<td>Resource</td>
@@ -702,7 +702,7 @@
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios_km:interpretation"><code>Ios_km:interpretation</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/interpretation" title="oslc_km:interpretation"><code>oslc_km:interpretation</code></a></td>
 			<td>Zero-or-one</td>
 			<td>False</td>
 			<td>Resource</td>
@@ -712,7 +712,7 @@
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios_km:traced-by"><code>Ios_km:traced-by</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/traced-by" title="oslc_km:traced-by"><code>oslc_km:traced-by</code></a></td>
 			<td>Zero-or-many</td>
 			<td>False</td>
 			<td>Resource</td>
@@ -722,7 +722,7 @@
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios_km:traces-to"><code>Ios_km:traces-to</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/traces-to" title="oslc_km:traces-to"><code>oslc_km:traces-to</code></a></td>
 			<td>Zero-or-many</td>
 			<td>False</td>
 			<td>Resource</td>
@@ -732,17 +732,17 @@
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios_km:trace type"><code>Ios_km:trace-type</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/trace-type" title="oslc_km:trace type"><code>oslc_km:trace-type</code></a></td>
 			<td>Exactly-one</td>
 			<td>True</td>
 			<td>Resource</td>
 			<td>Either Reference or Inline</td>
-			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/Concept" title="oslc_km:Concept"><code>oslc_km:Concept</code></a></td>
 			<td>A link to a concept that explains how the trace has been created, etc. This element must be linked to the "trace" node (if any).</td>
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios kpi:dataset"><code>Ios kpi:dataset</code></a></td>
+			<td><a href="http://trc-research.org/spec/kpi/dataset" title="oslc_kpi:dataset"><code>oslc_kpi:dataset</code></a></td>
 			<td>Zero-or-many</td>
 			<td>True</td>
 			<td>Resource</td>
@@ -762,7 +762,7 @@
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios_km:access"><code>Ios_km:access</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/access" title="oslc_km:access"><code>oslc_km:access</code></a></td>
 			<td>Zero-or-one</td>
 			<td>False</td>
 			<td>Either Resource or Local Resource</td>
@@ -782,7 +782,7 @@
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios_km:contents"><code>Ios_km:contents</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/contents" title="oslc_km:contents"><code>oslc_km:contents</code></a></td>
 			<td>Zero-or-one</td>
 			<td>False</td>
 			<td>String</td>
@@ -792,7 +792,7 @@
 
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios_km:sparql endpoint"><code>Ios_km:sparql-endpoint</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/sparql-endpoint" title="oslc_km:sparql endpoint"><code>oslc_km:sparql-endpoint</code></a></td>
 			<td>Zero-or-one</td>
 			<td>False</td>
 			<td>Resource</td>
@@ -818,7 +818,7 @@
 		</tr>
 		</thead>
 		<tbody>
-		<tr class="row-odd">
+		<tr>
 			<td><a href="http://purl.org/dc/terms/identifier" title="Dcterms:identifier"><code>dcterms:identifier</code></a></td>
 			<td>Exactly-one</td>
 			<td>True</td>
@@ -827,22 +827,22 @@
 			<td><a href="http://www.w3.org/2000/01/rdf-schema#Literal" title="Rdfs:Literal"><code>rdfs:Literal</code></a></td>
 			<td>The unique identifier for this metaproperty</td>
 		</tr>
-		<tr class="row-even">
-			<td ><a href="#" title="Ios km:tag"><code>Ios km:tag</code></a></td>
+		<tr>
+			<td ><a href="http://trc-research.org/spec/km/tag" title="oslc_km:tag"><code>oslc_km:tag</code></a></td>
 			<td>Exactly-one</td>
 			<td>False</td>
 			<td>Either Resource or Local Resource</td>
 			<td>Either Reference or Inline</td>
-			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/Concept" title="oslc_km:Concept"><code>oslc_km:Concept</code></a></td>
 			<td>A tag for this metaproperty represented through a concept or even any resource.</td>
 		</tr>
-		<tr class="row-odd">
-			<td ><a href="#" title="Ios km:value"><code>Ios km:value</code></a></td>
+		<tr>
+			<td ><a href="http://trc-research.org/spec/km/value" title="oslc_km:value"><code>oslc_km:value</code></a></td>
 			<td>Zero-or-one</td>
 			<td>False</td>
 			<td>Either Resource or Local Resource</td>
 			<td>Either Reference or Inline</td>
-			<td><a href="#Concept" title="Ios_km:Concept"><code>Ios_km:Concept</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/Concept" title="oslc_km:Concept"><code>oslc_km:Concept</code></a></td>
 			<td>A value for this metaproperty represented through a concept or even any resource.</td>
 		</tr>
 		</tbody>
@@ -873,7 +873,7 @@
 			<td>The unique identifier for this RSHP. It is now an string but it would be better a skos:Concept to avoid broken links between pieces of data.</td>
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios km:semantics"><code>Ios_km:semantics</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/semantics" title="oslc_km:semantics"><code>oslc_km:semantics</code></a></td>
 			<td>Zero-or-one</td>
 			<td>True</td>
 			<td>Either Resource or Local Resource</td>
@@ -882,7 +882,7 @@
 			<td>The concept (property) that represents the semantics of this relationship.</td>
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios km:from"><code>Ios_km:from</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/from" title="oslc_km:from"><code>oslc_km:from</code></a></td>
 			<td>Zero-or-one</td>
 			<td>False</td>
 			<td>Resource</td>
@@ -892,7 +892,7 @@
 		Status: the name of this property is still open.</td>
 		</tr>
 		<tr>
-			<td><a href="#" title="Ios km:to"><code>Ios_km:to</code></a></td>
+			<td><a href="http://trc-research.org/spec/km/to" title="oslc_km:to"><code>oslc_km:to</code></a></td>
 			<td>Zero-or-one</td>
 			<td>False</td>
 			<td>Resource</td>
@@ -1255,9 +1255,9 @@
 	<section>
 	<h2>KM Service Provider Capabilities </h2>
 	<h3>Service Provider Resources </h3>
-	<p>Service providers <strong>MUST</strong> provide one or more <code>oslc:ServiceProvider</code> resources as defined by <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Service_Provider_Resources">Core Specification Version 2.0 - Service Provider Resource</a>. Discovery of OSLC Service Provider Resources <strong>MAY</strong> be via one or more OSLC Service Provider Catalog Resources, or may be discovered by some other and/or additional Provider-specific means outwith the scope of this specification. The <code>oslc:Service</code> resources referenced by this <code>oslc:ServiceProvider</code> <strong>MUST</strong> have an <code>oslc:domain</code> of <code>http://ios.crystal-artemis.eu/ns/km/</code>.</p>
+	<p>Service providers <strong>MUST</strong> provide one or more <code>oslc:ServiceProvider</code> resources as defined by <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Service_Provider_Resources">Core Specification Version 2.0 - Service Provider Resource</a>. Discovery of OSLC Service Provider Resources <strong>MAY</strong> be via one or more OSLC Service Provider Catalog Resources, or may be discovered by some other and/or additional Provider-specific means outwith the scope of this specification. The <code>oslc:Service</code> resources referenced by this <code>oslc:ServiceProvider</code> <strong>MUST</strong> have an <code>oslc:domain</code> of <code>http://trc-research.org/spec/km/</code>.</p>
 	
-	<p>Service providers <strong>MAY</strong> provide one more more <code>oslc:ServiceProviderCatalog</code> resources as defined by <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Service_Provider_Catalog_Resources">Core Specification Version 2.0 - Service Provider Resources</a>. Any such catalog resources <strong>MUST</strong> include at least one <code>oslc:domain</code> of <code>http://ios.crystal-artemis.eu/ns/km/</code>. Discovery of top-level OSLC Service Provider Catalog Resources is outwith the scope of this specification.
+	<p>Service providers <strong>MAY</strong> provide one more more <code>oslc:ServiceProviderCatalog</code> resources as defined by <a href="http://openservices.net/bin/view/Main/OslcCoreSpecification#Service_Provider_Catalog_Resources">Core Specification Version 2.0 - Service Provider Resources</a>. Any such catalog resources <strong>MUST</strong> include at least one <code>oslc:domain</code> of <code>http://trc-research.org/spec/km/</code>. Discovery of top-level OSLC Service Provider Catalog Resources is outwith the scope of this specification.
 	</p>
 	<p>Service providers <strong>MUST</strong> give an <code>oslc:serviceProvider</code> property on all OSLC Defined Resources. This property <strong>MUST</strong> refer to an appropriate <code>oslc:ServiceProvider</code> resource.
 	</p>
